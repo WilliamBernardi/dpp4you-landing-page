@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyond Compliance Digital Product Passports</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Playfair Display for premium typography contrast -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght=0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Custom Configuration for Palette -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sienna: {
+                            50: '#FDF6F4',
+                            100: '#FBECE8',
+                            200: '#F5CFC6',
+                            300: '#EFA698',
+                            400: '#E17360',
+                            500: '#B84A39', // Base Burnt Sienna
+                            600: '#9C3D2E',
+                            700: '#803225',
+                            800: '#64261C',
+                            900: '#4D1B13',
+                        },
+                        royal: {
+                            50: '#F4F7FE',
+                            100: '#E9EFFF',
+                            200: '#C7D7FF',
+                            300: '#96B3FF',
+                            400: '#5F88FF',
+                            500: '#2B59C3', // Base Royal Blue
+                            600: '#2043A1',
+                            700: '#17307D',
+                            800: '#0F1E5C',
+                            900: '#0A1242',
+                        },
+                        earth: {
+                            sand: '#F9F6F0',
+                            clay: '#F0EAD6',
+                            wood: '#5C4033',
+                            charcoal: '#1A1D20',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom smooth focus and elegant transitions */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(224, 215, 200, 0.5);
+        }
+        .text-glow-sienna {
+            text-shadow: 0 0 15px rgba(184, 74, 57, 0.2);
+        }
+        .text-glow-royal {
+            text-shadow: 0 0 15px rgba(43, 89, 195, 0.2);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F9F6F0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #B84A39;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2B59C3;
+        }
+    </style>
+</head>
+<body class="bg-earth-sand text-earth-charcoal font-sans antialiased selection:bg-sienna-200 selection:text-sienna-900 overflow-x-hidden">
+
+    <!-- NAVIGATION -->
+    <header class="sticky top-0 z-50 w-full transition-all duration-300 glass-panel border-b border-earth-clay">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Clear Logo Placeholder - No name text, pure indicator -->
+                <div class="flex items-center space-x-3">
+                    <div class="px-3 py-1.5 rounded-lg border border-dashed border-earth-charcoal/40 bg-earth-sand/80 flex items-center justify-center text-[11px] font-mono tracking-wider text-earth-charcoal/60 uppercase font-semibold">
+                        [Logo Placeholder]
+                    </div>
+                </div>
+
+                <!-- Desktop Single Action (No other links) -->
+                <div class="hidden md:flex items-center">
+                    <a href="#contact" class="inline-flex items-center justify-center px-6 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider text-white bg-royal-500 hover:bg-royal-600 transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5">
+                        Contact Us
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <a href="#contact" class="inline-flex items-center justify-center px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider text-white bg-royal-500 hover:bg-royal-600 transition-all duration-200">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden py-16 lg:py-24 border-b border-earth-clay">
+        <!-- Background Accents -->
+        <div class="absolute top-0 left-1/4 w-[45rem] h-[45rem] bg-sienna-100/40 rounded-full blur-3xl -z-10 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-1/4 w-[35rem] h-[35rem] bg-royal-100/30 rounded-full blur-3xl -z-10 translate-y-1/3"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                
+                <!-- Left text content -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-earth-charcoal leading-none">
+                        Let your product passport <br class="hidden sm:inline" />
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-sienna-500 to-royal-500 font-serif italic">be your masterpiece.</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-earth-charcoal/70 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Don't let the EU Ecodesign regulation reduce your products to cold spreadsheets. Turn compliance into an <strong class="font-semibold text-earth-charcoal">elite storytelling portfolio</strong>, build direct customer loops, and establish mathematical, tamperproof trust.
+                    </p>
+
+                    <!-- Interactive Action CTAs -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#interactive-simulator" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-sienna-500 hover:bg-sienna-600 text-white font-semibold rounded-2xl shadow-lg shadow-sienna-500/25 hover:shadow-sienna-500/35 hover:-translate-y-0.5 transition-all duration-300">
+                            Launch Live Simulator <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                        </a>
+                        <a href="#contact" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-white hover:bg-earth-sand border-2 border-royal-100 hover:border-royal-200 text-royal-600 font-semibold rounded-2xl shadow-sm transition-all duration-200">
+                            Integrate Today <i data-lucide="layers" class="ml-2 w-5 h-5 text-royal-500"></i>
+                        </a>
+                    </div>
+
+                    <!-- Highlight Badges -->
+                    <div class="pt-6 border-t border-earth-clay/60 grid grid-cols-3 gap-4 text-left max-w-xl mx-auto lg:mx-0">
+                        <div>
+                            <span class="block text-2xl font-bold text-royal-500">100%</span>
+                            <span class="text-xs text-earth-charcoal/60 uppercase tracking-widest font-semibold">ESPR Compliant</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-bold text-sienna-500">Bespoke</span>
+                            <span class="text-xs text-earth-charcoal/60 uppercase tracking-widest font-semibold">Visual Themes</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-bold text-earth-charcoal/80">Tamperproof</span>
+                            <span class="text-xs text-earth-charcoal/60 uppercase tracking-widest font-semibold">Digital Signature</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Smartphone Mockup & Dynamic Visual Display (Aesthetic Editorial redesign) -->
+                <div class="lg:col-span-5 relative w-full flex justify-center">
+                    <!-- Absolute glowing rings behind mockups -->
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-gradient-to-tr from-sienna-200 to-royal-200 opacity-40 blur-2xl -z-10 animate-pulse"></div>
+                    
+                    <!-- Dynamic Interactive Widget in Hero -->
+                    <div class="w-full max-w-[340px] bg-[#EAE3D5] rounded-[44px] p-3.5 shadow-2xl border-4 border-white transform hover:scale-[1.02] transition-all duration-500 relative">
+                        <!-- Top Notch -->
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 h-6 w-32 bg-[#EAE3D5] rounded-b-xl z-20 flex items-center justify-center">
+                            <span class="w-3 h-3 rounded-full bg-earth-charcoal/20 inline-block mr-1"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-earth-charcoal/10 inline-block"></span>
+                        </div>
+
+                        <!-- Main Screen Content Window (Light Aesthetic, Editorial Theme) -->
+                        <div class="w-full bg-[#FCFBF9] rounded-[32px] overflow-hidden min-h-[520px] text-earth-charcoal flex flex-col justify-between text-xs font-sans border border-earth-clay">
+                            
+                            <!-- Phone Status Bar -->
+                            <div class="flex justify-between items-center px-6 pt-3.5 text-[10px] text-earth-charcoal/50 font-medium">
+                                <span>9:41</span>
+                                <div class="flex items-center space-x-1.5">
+                                    <i data-lucide="signal" class="w-3 h-3"></i>
+                                    <i data-lucide="wifi" class="w-3 h-3"></i>
+                                    <i data-lucide="battery" class="w-3 h-3"></i>
+                                </div>
+                            </div>
+
+                            <!-- Mockup Core Visual Header (Editorial Style) -->
+                            <div id="mock-header" class="px-5 pt-4 pb-2 transition-all duration-300">
+                                <div class="flex justify-between items-end border-b border-earth-clay/60 pb-3">
+                                    <div>
+                                        <p class="text-[8px] uppercase tracking-widest text-sienna-500 font-bold">DIGITAL PORTFOLIO PASSPORT</p>
+                                        <h4 id="mock-product-name" class="text-lg font-serif italic text-earth-charcoal tracking-tight mt-0.5">Signature Woolen Coat</h4>
+                                    </div>
+                                    <div class="w-7 h-7 rounded-lg bg-sienna-50 border border-sienna-200 flex items-center justify-center">
+                                        <i data-lucide="qr-code" class="w-3.5 h-3.5 text-sienna-500"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Screen Dynamic Content -->
+                            <div id="mock-screen-content" class="flex-1 px-5 py-3 overflow-y-auto space-y-3.5 scrollbar-none">
+                                <div class="relative rounded-xl overflow-hidden h-28 bg-cover bg-center border border-earth-clay" style="background-image: url('https://placehold.co/400x300/4D1B13/FFFFFF?text=Craftsmanship'); animate-duration: 2s;">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-earth-charcoal/90 via-earth-charcoal/30 to-transparent flex flex-col justify-end p-2.5">
+                                        <span class="text-[8px] font-semibold text-sienna-300 tracking-widest uppercase">Volume I</span>
+                                        <p class="text-[10px] text-white font-serif italic font-medium leading-tight">100% Sustainable Alpaca, Woven in Biella, Italy</p>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white p-3 rounded-xl border border-earth-clay/60 space-y-2 shadow-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-[10px] uppercase tracking-wider font-semibold text-sienna-600 font-mono">Provenance & Materials</span>
+                                        <span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 text-[8px] rounded-full font-bold">Grade A</span>
+                                    </div>
+                                    <p class="text-[10px] text-earth-charcoal/70 leading-relaxed font-light">
+                                        Each thread is traceable back to the farm of origin, guaranteeing ethical breeding, zero chemical runoff, and certified circularity.
+                                    </p>
+                                </div>
+
+                                <div class="bg-white p-3 rounded-xl border border-earth-clay/60 flex items-center justify-between shadow-sm hover:bg-earth-sand/30 transition-colors cursor-pointer">
+                                    <div class="flex items-center space-x-2.5">
+                                        <div class="p-1.5 bg-royal-50 text-royal-600 rounded-lg border border-royal-100">
+                                            <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-[10px] font-bold text-earth-charcoal">Direct Brand Interface</p>
+                                            <p class="text-[8px] text-earth-charcoal/50">Repair, Resell, or Direct Consultation</p>
+                                        </div>
+                                    </div>
+                                    <i data-lucide="arrow-right" class="w-3 h-3 text-earth-charcoal/40"></i>
+                                </div>
+                            </div>
+
+                            <!-- Screen Footer (Dynamic Passport Signature) -->
+                            <div class="p-4 bg-earth-sand/50 border-t border-earth-clay flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <div id="mock-badge-dot" class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                                    <span id="mock-badge-text" class="text-[9px] text-earth-charcoal/60 font-bold tracking-widest uppercase">Verified Authentic</span>
+                                </div>
+                                <i data-lucide="shield-check" class="w-4 h-4 text-royal-500"></i>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- THE CORE PROPOSITION: BEYOND COMPLIANCE -->
+    <section id="why-beyond" class="py-20 bg-white border-b border-earth-clay">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-sienna-500 bg-sienna-50 px-3 py-1.5 rounded-full">The Philosophy</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-earth-charcoal">
+                    Why comply when you can <span class="font-serif italic text-royal-500">captivate?</span>
+                </h2>
+                <p class="text-lg text-earth-charcoal/70 font-light">
+                    EU regulation mandates Digital Product Passports. Most SaaS tools offer a boring compliance catalog. We elevate your passport into a primary brand touchpoint that customers love.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Pillar 1: The Product Portfolio -->
+                <div class="bg-earth-sand/50 rounded-2xl p-8 border border-earth-clay hover:border-sienna-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div class="w-12 h-12 bg-sienna-500/10 text-sienna-500 rounded-xl flex items-center justify-center">
+                            <i data-lucide="layout-template" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-earth-charcoal">It's Your Brand Portfolio</h3>
+                        <p class="text-sm text-earth-charcoal/70 leading-relaxed">
+                            Showcase beautiful product images, interactive material stories, craftsman diaries, and origin maps. Our passport design turns regulatory data into luxury storytelling that amplifies brand value.
+                        </p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-earth-clay/50">
+                        <a href="#interactive-simulator" class="inline-flex items-center text-xs font-bold text-sienna-500 uppercase tracking-wider hover:text-sienna-600 transition-colors">
+                            Explore Templates <i data-lucide="arrow-right" class="ml-1 w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pillar 2: Direct Customer Connection -->
+                <div class="bg-earth-sand/50 rounded-2xl p-8 border border-earth-clay hover:border-royal-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div class="w-12 h-12 bg-royal-500/10 text-royal-500 rounded-xl flex items-center justify-center">
+                            <i data-lucide="users" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-earth-charcoal">Direct-to-Owner Contact</h3>
+                        <p class="text-sm text-earth-charcoal/70 leading-relaxed">
+                            Open a direct channel with the person holding your product. Enable custom repair bookings, single-tap warranty registration, access to local recycling, and a secure secondary-resale marketplace.
+                        </p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-earth-clay/50">
+                        <a href="#interactive-simulator" class="inline-flex items-center text-xs font-bold text-royal-500 uppercase tracking-wider hover:text-royal-600 transition-colors">
+                            See Channel in Action <i data-lucide="arrow-right" class="ml-1 w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pillar 3: Cryptographic Trust -->
+                <div class="bg-earth-sand/50 rounded-2xl p-8 border border-earth-clay hover:border-amber-600/20 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div class="w-12 h-12 bg-[#8C3225]/10 text-[#8C3225] rounded-xl flex items-center justify-center">
+                            <i data-lucide="fingerprint" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-earth-charcoal">Tamperproof Signatures</h3>
+                        <p class="text-sm text-earth-charcoal/70 leading-relaxed">
+                            We secure your data with mathematically verifiable, secure cryptographic signatures. Consumers and authorities can immediately verify database integrity and authenticity with absolute mathematical certainty.
+                        </p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-earth-clay/50">
+                        <a href="#cryptography" class="inline-flex items-center text-xs font-bold text-sienna-600 uppercase tracking-wider hover:text-sienna-700 transition-colors">
+                            Try Verify Sandbox <i data-lucide="arrow-right" class="ml-1 w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE PASSPORT SIMULATOR SECTION -->
+    <section id="interactive-simulator" class="py-20 bg-earth-sand/30 border-b border-earth-clay">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Interactive Controls (Left Side) -->
+                <div class="lg:col-span-6 space-y-8">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-royal-500 bg-royal-50 px-3 py-1.5 rounded-full">Interactive Sandbox</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-earth-charcoal mt-3">
+                            Experience the Power of <br />
+                            <span class="text-sienna-500">Beyond-Compliance</span> Passports
+                        </h2>
+                        <p class="text-base text-earth-charcoal/70 mt-4 leading-relaxed">
+                            Select one of the passport modules below to see how our layout engine transforms legal obligations into high-fidelity premium consumer experiences on the simulated smartphone viewport.
+                        </p>
+                    </div>
+
+                    <!-- Simulator Control Buttons/Cards -->
+                    <div class="space-y-4">
+                        <!-- Control Button: Pure Compliance (Boring) -->
+                        <button onclick="switchSimTab('compliance')" id="sim-btn-compliance" class="w-full text-left p-4 rounded-xl border-2 border-earth-clay bg-white hover:bg-earth-sand/40 transition-all duration-200 flex items-start space-x-4">
+                            <div class="p-2.5 bg-slate-100 text-slate-500 rounded-lg">
+                                <i data-lucide="file-text" class="w-5 h-5"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-bold text-earth-charcoal">1. Strict ESPR Compliance View</span>
+                                    <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-600 font-semibold uppercase tracking-wider">Required Minimum</span>
+                                </div>
+                                <p class="text-xs text-earth-charcoal/60 mt-1">The mandatory regulatory spreadsheet. Cold metrics, raw IDs, compliance standards.</p>
+                            </div>
+                        </button>
+
+                        <!-- Control Button: Premium Portfolio (Dynamic) -->
+                        <button onclick="switchSimTab('portfolio')" id="sim-btn-portfolio" class="w-full text-left p-4 rounded-xl border-2 border-sienna-500 bg-white hover:bg-sienna-50/20 transition-all duration-200 flex items-start space-x-4 shadow-md">
+                            <div class="p-2.5 bg-sienna-500/10 text-sienna-500 rounded-lg">
+                                <i data-lucide="image" class="w-5 h-5"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-bold text-earth-charcoal">2. Premium Portfolio Showcase</span>
+                                    <span class="text-[10px] bg-sienna-100 text-sienna-600 px-2 py-0.5 rounded font-semibold uppercase tracking-wider">Our Feature</span>
+                                </div>
+                                <p class="text-xs text-earth-charcoal/60 mt-1">Rich graphics, craftsmanship stories, video embeds, and detailed physical material provenance.</p>
+                            </div>
+                        </button>
+
+                        <!-- Control Button: Direct Contact/Loop -->
+                        <button onclick="switchSimTab('contact-loop')" id="sim-btn-contact-loop" class="w-full text-left p-4 rounded-xl border-2 border-earth-clay bg-white hover:bg-royal-50/20 transition-all duration-200 flex items-start space-x-4">
+                            <div class="p-2.5 bg-royal-500/10 text-royal-500 rounded-lg">
+                                <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-bold text-earth-charcoal">3. Direct Brand-Customer Loop</span>
+                                    <span class="text-[10px] bg-royal-100 text-royal-600 px-2 py-0.5 rounded font-semibold uppercase tracking-wider">Our Feature</span>
+                                </div>
+                                <p class="text-xs text-earth-charcoal/60 mt-1">One-click repair schedules, customer assistance channels, authentic resale portals.</p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Simulated Phone (Right Side - Light Editorial Theme) -->
+                <div class="lg:col-span-6 flex justify-center">
+                    <div class="w-full max-w-[360px] bg-[#EAE3D5] rounded-[48px] p-4 shadow-2xl border-4 border-white relative">
+                        <!-- Speaker ear cutout -->
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 h-6 w-36 bg-[#EAE3D5] rounded-b-2xl z-20 flex items-center justify-center">
+                            <span class="w-12 h-1 bg-earth-charcoal/10 rounded-full inline-block"></span>
+                        </div>
+
+                        <!-- Inside phone container (Premium Warm Cream Paper Look) -->
+                        <div id="simulator-phone-screen" class="w-full bg-[#FCFBF9] rounded-[36px] overflow-hidden min-h-[560px] text-earth-charcoal flex flex-col justify-between font-sans relative border border-earth-clay shadow-inner">
+                            
+                            <!-- Phone Bar -->
+                            <div class="flex justify-between items-center px-6 pt-3.5 text-[10px] text-earth-charcoal/50 font-medium">
+                                <span>14:20</span>
+                                <div class="flex items-center space-x-1.5">
+                                    <i data-lucide="signal" class="w-3.5 h-3.5"></i>
+                                    <span class="font-bold text-[8px] bg-[#EAE3D5] text-earth-charcoal px-1 py-0.2 rounded">5G</span>
+                                    <i data-lucide="battery" class="w-3.5 h-3.5"></i>
+                                </div>
+                            </div>
+
+                            <!-- Interactive Title Wrapper -->
+                            <div class="px-5 pt-4 pb-2 border-b border-earth-clay">
+                                <div class="flex justify-between items-end pb-3">
+                                    <div>
+                                        <p id="sim-phone-label" class="text-[8px] uppercase tracking-widest text-sienna-500 font-bold">dpp4you • Portfolio</p>
+                                        <h3 id="sim-phone-title" class="text-lg font-serif italic text-earth-charcoal tracking-tight mt-0.5">Signature Woolen Coat</h3>
+                                    </div>
+                                    <span class="w-8 h-8 rounded-lg bg-earth-sand border border-earth-clay flex items-center justify-center text-xs">
+                                        <i data-lucide="sparkles" class="w-4 h-4 text-sienna-400 animate-pulse"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Screen Contents (Changes Dynamically) -->
+                            <div id="sim-content-area" class="flex-1 px-5 py-4 overflow-y-auto space-y-4 max-h-[400px]">
+                                <!-- Populated dynamically by switchSimTab with editorial light styles -->
+                            </div>
+
+                            <!-- Verified Bottom Banner -->
+                            <div id="sim-badge-footer" class="p-4 bg-earth-sand border-t border-earth-clay flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="flex h-2 w-2 relative">
+                                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                    </span>
+                                    <span class="text-[8px] text-earth-charcoal/60 font-bold tracking-widest uppercase">Verified Cryptographic Signature</span>
+                                </div>
+                                <span class="text-[9px] text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded font-mono">SEC-7F99...A32</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CRYPTOGRAPHIC SANDBOX SECTION -->
+    <section id="cryptography" class="py-20 bg-earth-charcoal text-white relative overflow-hidden border-b border-stone-800">
+        <!-- Technical grid bg effect -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
+        <div class="absolute right-0 top-1/4 w-80 h-80 rounded-full bg-royal-500/10 blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-royal-400 bg-royal-950 border border-royal-800/60 px-3 py-1.5 rounded-full">Absolute Proof</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+                    Beyond Compliance: <br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-sienna-400 to-royal-400 font-serif italic">Mathematically Verifiable</span> Integrity
+                </h2>
+                <p class="text-base text-stone-300 max-w-2xl mx-auto font-light leading-relaxed">
+                    A simple digital catalog can easily be altered or faked. Every Passport receives a cryptographic signature instantly validated against the secure digital record.
+                </p>
+            </div>
+
+            <!-- Cryptographic Interactive Sandbox Widget -->
+            <div class="bg-stone-900 rounded-3xl border border-stone-800 p-6 sm:p-8 max-w-4xl mx-auto shadow-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
+                    
+                    <!-- Sandbox Control and Slider (Left) -->
+                    <div class="md:col-span-6 space-y-6 flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-2.5">
+                                <span class="w-8 h-8 rounded-lg bg-royal-500/20 text-royal-400 flex items-center justify-center">
+                                    <i data-lucide="shield" class="w-4 h-4"></i>
+                                </span>
+                                <h3 class="text-lg font-bold text-white">Interactive Cryptographic Hash</h3>
+                            </div>
+                            <p class="text-xs text-stone-400 leading-relaxed">
+                                Below is the actual compliance data signed for the <strong class="text-white">Signature Woolen Coat</strong>. Change the recycled material percentage slider to see how the mathematical hash signature responds to tampering instantly.
+                            </p>
+                        </div>
+
+                        <!-- Interactive Control Tool -->
+                        <div class="p-5 bg-stone-950 rounded-2xl border border-stone-800 space-y-4">
+                            <div class="flex justify-between items-center text-xs">
+                                <span class="text-stone-300 font-medium">Recycled Materials Content</span>
+                                <span id="sandbox-slider-value" class="text-sienna-400 font-mono font-bold text-sm">85% Recycled</span>
+                            </div>
+                            <input 
+                                type="range" 
+                                id="crypt-slider" 
+                                min="0" 
+                                max="100" 
+                                value="85" 
+                                class="w-full accent-sienna-500 bg-stone-800 h-2 rounded-lg cursor-pointer transition-all duration-150"
+                                oninput="updateCryptoSandbox()"
+                            />
+                            <div class="flex justify-between text-[10px] text-stone-500 font-mono">
+                                <span>0% (Virgin)</span>
+                                <span>100% (Pure Circular)</span>
+                            </div>
+                        </div>
+
+                        <!-- Tamper Quick Button -->
+                        <button onclick="tamperData()" class="w-full py-3 bg-stone-800 hover:bg-stone-700/80 text-white rounded-xl text-xs font-semibold tracking-wider transition-colors border border-stone-700 flex items-center justify-center space-x-2">
+                            <i data-lucide="edit-3" class="w-4 h-4 text-sienna-400"></i>
+                            <span>Inject Custom Altered Data (Tamper Proof Demo)</span>
+                        </button>
+                    </div>
+
+                    <!-- Sandbox Realtime Technical Output Terminal (Right) -->
+                    <div class="md:col-span-6 bg-stone-950 p-6 rounded-2xl border border-stone-800 font-mono text-xs flex flex-col justify-between">
+                        
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center pb-3 border-b border-stone-900">
+                                <span class="text-[10px] uppercase text-stone-500 tracking-wider">Signature Registry Output</span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500" id="terminal-light"></span>
+                            </div>
+
+                            <!-- Live Code Output block -->
+                            <div class="space-y-2 text-stone-300">
+                                <div><span class="text-royal-400">"product_id":</span> "dpp_signature_88924",</div>
+                                <div><span class="text-royal-400">"recycled_content":</span> "<span id="term-recycled" class="text-emerald-400">85%</span>",</div>
+                                <div><span class="text-royal-400">"origin":</span> "Biella, Italy",</div>
+                                <div><span class="text-royal-400">"espr_certified":</span> true,</div>
+                                <div><span class="text-royal-400">"signature_standard":</span> "ECDSA_SHA256",</div>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Signature Output -->
+                        <div class="pt-4 border-t border-stone-900 space-y-2">
+                            <div class="flex items-center justify-between text-[10px] text-stone-500">
+                                <span>ECDSA SHA-256 SECURE SIGNATURE</span>
+                                <span id="sig-status-label" class="text-emerald-400 font-bold tracking-widest uppercase">Verified</span>
+                            </div>
+                            <div id="sig-hash-box" class="p-3 bg-emerald-950/20 text-emerald-400 border border-emerald-900/50 rounded-xl text-[10px] break-all select-all text-center leading-normal transition-all duration-300 font-mono">
+                                e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+                            </div>
+                            <p id="crypto-explanation" class="text-[10px] text-stone-400 text-center leading-relaxed">
+                                Digital signature matches the verified registry database mathematically.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEMPLATES SECTION -->
+    <section id="templates" class="py-20 bg-white border-b border-earth-clay">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+                <div class="space-y-4 max-w-xl">
+                    <span class="text-xs font-bold uppercase tracking-widest text-sienna-500 bg-sienna-50 px-3 py-1.5 rounded-full">Exquisite Customization</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-earth-charcoal">
+                        Choose a design theme or let us build a <span class="font-serif italic text-sienna-500">bespoke masterpiece.</span>
+                    </h2>
+                </div>
+                <div class="text-left md:text-right">
+                    <p class="text-sm text-earth-charcoal/70 max-w-sm leading-relaxed mb-4">
+                        Pick from our conversion-optimized themes, or connect with our UI design studio to craft a completely custom passport experience.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center text-xs font-bold text-royal-500 uppercase tracking-widest hover:text-royal-600 transition-colors">
+                        Inquire Custom Design Service <i data-lucide="arrow-right" class="ml-1 w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Templates Card Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Template Option 1 -->
+                <div class="group bg-earth-sand rounded-2xl overflow-hidden border border-earth-clay hover:shadow-xl transition-all duration-300">
+                    <div class="h-48 bg-sienna-900/10 flex items-center justify-center p-6 relative overflow-hidden">
+                        <div class="w-full max-w-[140px] bg-white rounded-xl p-2.5 shadow-lg border border-earth-clay scale-95 group-hover:scale-100 transition-transform duration-300 space-y-1 text-[8px]">
+                            <div class="w-full h-12 bg-cover bg-center rounded-lg" style="background-image: url('https://placehold.co/100x100/5C4033/FFFFFF?text=Luxury');"></div>
+                            <div class="h-2 w-12 bg-sienna-500 rounded"></div>
+                            <div class="h-1.5 w-16 bg-earth-clay rounded"></div>
+                            <div class="h-1.5 w-8 bg-earth-clay rounded"></div>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-sienna-500 font-bold uppercase tracking-wider">Luxury Artisan</span>
+                            <span class="text-[10px] bg-stone-200 px-1.5 py-0.5 rounded text-stone-600 font-semibold font-mono">ID: 01</span>
+                        </div>
+                        <h4 class="text-base font-bold text-earth-charcoal">Sienna Heritage</h4>
+                        <p class="text-xs text-earth-charcoal/60 leading-relaxed">Perfect for luxury leather, boutique apparel, high-end watches, and luxury craft products.</p>
+                    </div>
+                </div>
+
+                <!-- Template Option 2 -->
+                <div class="group bg-earth-sand rounded-2xl overflow-hidden border border-earth-clay hover:shadow-xl transition-all duration-300">
+                    <div class="h-48 bg-royal-900/10 flex items-center justify-center p-6 relative overflow-hidden">
+                        <div class="w-full max-w-[140px] bg-[#FAF8F5] rounded-xl p-2.5 shadow-lg border border-royal-200 scale-95 group-hover:scale-100 transition-transform duration-300 space-y-1.5">
+                            <div class="flex justify-between items-center">
+                                <div class="h-2 w-10 bg-royal-500 rounded"></div>
+                                <div class="w-2 h-2 rounded-full bg-royal-400"></div>
+                            </div>
+                            <div class="h-8 bg-white rounded flex items-center justify-center text-[8px] text-royal-600 border border-royal-100 font-mono">0x4F8...B01</div>
+                            <div class="h-1.5 w-14 bg-earth-clay rounded"></div>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-royal-500 font-bold uppercase tracking-wider">Technical</span>
+                            <span class="text-[10px] bg-stone-200 px-1.5 py-0.5 rounded text-stone-600 font-semibold font-mono">ID: 02</span>
+                        </div>
+                        <h4 class="text-base font-bold text-earth-charcoal">Royal Blue Interceptor</h4>
+                        <p class="text-xs text-earth-charcoal/60 leading-relaxed">Ideal for batteries, mechanical electronics, industrial machines, and clean tech hardware.</p>
+                    </div>
+                </div>
+
+                <!-- Template Option 3 -->
+                <div class="group bg-earth-sand rounded-2xl overflow-hidden border border-earth-clay hover:shadow-xl transition-all duration-300">
+                    <div class="h-48 bg-emerald-900/10 flex items-center justify-center p-6 relative overflow-hidden">
+                        <div class="w-full max-w-[140px] bg-white rounded-xl p-2.5 shadow-lg border border-emerald-100 scale-95 group-hover:scale-100 transition-transform duration-300 space-y-1">
+                            <div class="flex justify-between items-center">
+                                <div class="w-3 h-3 rounded bg-emerald-500"></div>
+                                <div class="h-1.5 w-8 bg-stone-200 rounded"></div>
+                            </div>
+                            <div class="h-12 bg-emerald-50 rounded flex items-center justify-center text-[10px] text-emerald-600 font-bold">CO₂ -4.5kg</div>
+                            <div class="h-1.5 w-12 bg-stone-200 rounded"></div>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-emerald-600 font-bold uppercase tracking-wider">Ecological Minimalist</span>
+                            <span class="text-[10px] bg-stone-200 px-1.5 py-0.5 rounded text-stone-600 font-semibold font-mono">ID: 03</span>
+                        </div>
+                        <h4 class="text-base font-bold text-earth-charcoal">Earthy Minimal</h4>
+                        <p class="text-xs text-earth-charcoal/60 leading-relaxed">Made for sustainable fashion, home furniture, natural mattresses, and lifestyle cosmetics.</p>
+                    </div>
+                </div>
+
+                <!-- Template Option 4: Bespoke Showcase -->
+                <div class="bg-gradient-to-br from-earth-charcoal to-stone-900 text-white rounded-2xl overflow-hidden border border-stone-800 p-8 flex flex-col justify-between hover:shadow-2xl transition-all duration-300">
+                    <div class="space-y-4">
+                        <span class="text-[10px] bg-sienna-500 text-white px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Bespoke Design Studio</span>
+                        <h4 class="text-xl font-bold">Your Custom Masterpiece</h4>
+                        <p class="text-xs text-stone-300 leading-relaxed">
+                            Have our design agency create a custom passport template reflecting your brand's physical aesthetic guidelines, interactive media elements, and style preferences.
+                        </p>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center text-xs font-bold text-sienna-400 uppercase tracking-widest hover:text-sienna-300 transition-colors pt-6">
+                        Inquire Custom Template <i data-lucide="arrow-right" class="ml-1 w-4 h-4"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / DESIGN CONSULTATION FORM -->
+    <section id="contact" class="py-24 bg-gradient-to-b from-earth-sand/20 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                <!-- Info Section left -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-royal-500 bg-royal-50/80 px-3.5 py-2 rounded-full border border-royal-100">Work With Our Team</span>
+                        <h2 class="text-4xl font-extrabold tracking-tight text-earth-charcoal mt-4 leading-tight">
+                            Let's Co-Create <br />Your Digital Brand Passport
+                        </h2>
+                        <p class="text-base text-earth-charcoal/70 mt-4 leading-relaxed">
+                            Interested in exploring how our digital product passports will fit into your existing operations, ERP databases, or how you can get a bespoke brand layout built from scratch? Tell us a bit about your brand, and our team will contact you for a tailored experience.
+                        </p>
+                    </div>
+
+                    <!-- Bullet Points -->
+                    <div class="space-y-4 text-sm text-earth-charcoal/80">
+                        <div class="flex items-start space-x-3">
+                            <div class="p-1 bg-royal-500/10 text-royal-500 rounded-md mt-0.5">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            <p><strong>1-on-1 Consultation:</strong> Define custom UI layouts mimicking your premium physical labels.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="p-1 bg-royal-500/10 text-royal-500 rounded-md mt-0.5 animate-pulse">
+                                <i data-lucide="arrow-right-left" class="w-4 h-4"></i>
+                            </div>
+                            <p class="text-earth-charcoal"><strong>Technical Feasibility:</strong> let's work together to integrate the new digital product passport directly into your existing work flow</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="p-1 bg-royal-500/10 text-royal-500 rounded-md mt-0.5">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            <p><strong>Compliance Mapping:</strong> Precise alignment mapping with EU Ecodesign guidelines (Textiles, Apparel, Electronics).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Section right -->
+                <div class="lg:col-span-7 bg-earth-sand rounded-3xl border border-earth-clay p-8 sm:p-10 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-royal-500/5 rounded-full blur-2xl pointer-events-none"></div>
+                    <form id="contact-form" class="space-y-6" onsubmit="handleFormSubmission(event)">
+                        <!-- Row 1: Name and Brand Name -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="form-name" class="block text-xs font-bold uppercase tracking-wider text-earth-charcoal/70 mb-2">First & Last Name</label>
+                                <input 
+                                    type="text" 
+                                    id="form-name" 
+                                    required 
+                                    placeholder="Alexander Mercer" 
+                                    class="w-full px-4 py-3 bg-white border border-earth-clay rounded-xl focus:outline-none focus:ring-2 focus:ring-sienna-500 text-sm transition-all text-earth-charcoal"
+                                />
+                            </div>
+                            <div>
+                                <label for="form-brand" class="block text-xs font-bold uppercase tracking-wider text-earth-charcoal/70 mb-2">Brand / Company Name</label>
+                                <input 
+                                    type="text" 
+                                    id="form-brand" 
+                                    required 
+                                    placeholder="Signature Clothing S.p.A." 
+                                    class="w-full px-4 py-3 bg-white border border-earth-clay rounded-xl focus:outline-none focus:ring-2 focus:ring-sienna-500 text-sm transition-all text-earth-charcoal"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Row 2: Email and Industry Sector -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="form-email" class="block text-xs font-bold uppercase tracking-wider text-earth-charcoal/70 mb-2">Business Email</label>
+                                <input 
+                                    type="email" 
+                                    id="form-email" 
+                                    required 
+                                    placeholder="alex@example.com" 
+                                    class="w-full px-4 py-3 bg-white border border-earth-clay rounded-xl focus:outline-none focus:ring-2 focus:ring-sienna-500 text-sm transition-all text-earth-charcoal"
+                                />
+                            </div>
+                            <div>
+                                <label for="form-category" class="block text-xs font-bold uppercase tracking-wider text-earth-charcoal/70 mb-2">Primary Industry Sector</label>
+                                <select 
+                                    id="form-category" 
+                                    class="w-full px-4 py-3 bg-white border border-earth-clay rounded-xl focus:outline-none focus:ring-2 focus:ring-sienna-500 text-sm transition-all text-earth-charcoal/80"
+                                >
+                                    <option value="textiles">Textiles & Apparel</option>
+                                    <option value="furniture">Home Furniture</option>
+                                    <option value="electronics">Consumer Electronics</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Row 3: Message Support -->
+                        <div>
+                            <label for="form-message" class="block text-xs font-bold uppercase tracking-wider text-earth-charcoal/70 mb-2">How can our team assist you?</label>
+                            <textarea 
+                                id="form-message" 
+                                rows="4" 
+                                placeholder="We want our Digital Product Passports to represent our premium artisan values..." 
+                                class="w-full px-4 py-3 bg-white border border-earth-clay rounded-xl focus:outline-none focus:ring-2 focus:ring-sienna-500 text-sm transition-all text-earth-charcoal"
+                            ></textarea>
+                        </div>
+
+                        <!-- Submit Button with visual success indicator - Cleaned neutral naming -->
+                        <div>
+                            <button 
+                                type="submit" 
+                                id="submit-form-btn" 
+                                class="w-full py-4 bg-sienna-500 hover:bg-sienna-600 text-white font-semibold rounded-2xl shadow-lg shadow-sienna-500/20 hover:shadow-sienna-500/30 transition-all duration-300 flex items-center justify-center space-x-2"
+                            >
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                                <span>Submit Inquiry</span>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- Submission Feedback Toast -->
+                    <div id="form-toast" class="hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl flex items-center space-x-3 transition-opacity">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 font-bold"></i>
+                        <div>
+                            <p class="text-xs font-bold">Inquiry received successfully!</p>
+                            <p class="text-[11px] text-emerald-700/80">Our lead UI designer will construct your preview passport and connect with you shortly.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Alternative services contact statement -->
+            <div class="mt-12 text-center">
+                <p class="text-xs text-earth-charcoal/60 leading-relaxed">
+                    Or if you want to contact us about other services we offer (e.g. legal data retention law for dpp from other providers), <br class="hidden sm:inline" />
+                    email us directly at <a href="mailto:sales@dpp4you.com" class="text-royal-600 hover:text-royal-700 font-semibold underline decoration-royal-200 hover:decoration-royal-500 transition-colors">sales@dpp4you.com</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MINIMAL FOOTER -->
+    <footer class="bg-earth-sand border-t border-earth-clay/60 py-10 text-center text-xs text-earth-charcoal/60">
+        Made with ❤️ for you in the 🇪🇺
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC AND INTERACTIVE ENGINE -->
+    <script>
+        // Initialization
+        window.onload = function() {
+            // Replace lucide icon tags with SVGs
+            lucide.createIcons();
+
+            // Set default interactive states
+            switchSimTab('portfolio');
+            updateCryptoSandbox();
+        };
+
+        // ==========================================
+        // DYNAMIC SMARTPHONE SIMULATOR MODULE ENGINE
+        // ==========================================
+        function switchSimTab(tab) {
+            const phoneLabel = document.getElementById('sim-phone-label');
+            const phoneTitle = document.getElementById('sim-phone-title');
+            const contentArea = document.getElementById('sim-content-area');
+
+            // Reset control buttons visually
+            const btnCompliance = document.getElementById('sim-btn-compliance');
+            const btnPortfolio = document.getElementById('sim-btn-portfolio');
+            const btnContact = document.getElementById('sim-btn-contact-loop');
+
+            btnCompliance.className = "w-full text-left p-4 rounded-xl border-2 border-earth-clay bg-white hover:bg-earth-sand/40 transition-all duration-200 flex items-start space-x-4";
+            btnPortfolio.className = "w-full text-left p-4 rounded-xl border-2 border-earth-clay bg-white hover:bg-sienna-50/20 transition-all duration-200 flex items-start space-x-4";
+            btnContact.className = "w-full text-left p-4 rounded-xl border-2 border-earth-clay bg-white hover:bg-royal-50/20 transition-all duration-200 flex items-start space-x-4";
+
+            // Inject tab specific values and set active button CSS (Redesigned Editorial Light layout templates)
+            if (tab === 'compliance') {
+                document.getElementById('sim-btn-compliance').className = "w-full text-left p-4 rounded-xl border-2 border-slate-400 bg-white shadow-md transition-all duration-200 flex items-start space-x-4";
+                
+                phoneLabel.innerText = "Regulatory Data Minimum";
+                phoneTitle.innerText = "Compliance Spreadsheet";
+                
+                contentArea.innerHTML = `
+                    <div class="space-y-3 font-sans">
+                        <div class="bg-white p-4 rounded-xl border border-earth-clay space-y-2.5 font-mono text-[9px] text-earth-charcoal/80 shadow-sm">
+                            <div class="flex justify-between border-b border-earth-clay/60 pb-1.5">
+                                <span class="text-earth-charcoal/50">REGISTRATION ID</span>
+                                <span class="text-earth-charcoal font-bold">EU-ESPR-98831-294</span>
+                            </div>
+                            <div class="flex justify-between border-b border-earth-clay/60 pb-1.5">
+                                <span class="text-earth-charcoal/50">MANUFACTURER ID</span>
+                                <span class="text-earth-charcoal font-bold">EU-STUDIO-APPAREL</span>
+                            </div>
+                            <div class="flex justify-between border-b border-earth-clay/60 pb-1.5">
+                                <span class="text-earth-charcoal/50">CARBON METRIC (CO2e)</span>
+                                <span class="text-earth-charcoal font-bold">4.21 Kg CO2e/unit</span>
+                            </div>
+                            <div class="flex justify-between border-b border-earth-clay/60 pb-1.5">
+                                <span class="text-earth-charcoal/50">TRACEABLE CIRCULARITY</span>
+                                <span class="text-earth-charcoal font-bold">85.4% Traceable</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-3.5 rounded-xl border border-earth-clay space-y-2 text-[10px] text-earth-charcoal/80 shadow-sm">
+                            <p class="font-bold text-earth-charcoal/70">Materials Breakdown:</p>
+                            <div class="w-full bg-earth-sand border border-earth-clay/40 rounded-full h-2.5 overflow-hidden flex">
+                                <div class="bg-sienna-500 h-full" style="width: 85%"></div>
+                                <div class="bg-earth-clay h-full" style="width: 15%"></div>
+                            </div>
+                            <div class="flex justify-between text-[8px] text-earth-charcoal/50">
+                                <span>85% Organic Recycled Alpaca</span>
+                                <span>15% Virgin Wool</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } 
+            else if (tab === 'portfolio') {
+                document.getElementById('sim-btn-portfolio').className = "w-full text-left p-4 rounded-xl border-2 border-sienna-500 bg-white shadow-md transition-all duration-200 flex items-start space-x-4";
+                
+                phoneLabel.innerText = "Interactive Portfolio View";
+                phoneTitle.innerText = "Signature Woolen Coat";
+                
+                contentArea.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="relative rounded-2xl overflow-hidden h-32 bg-cover bg-center border border-earth-clay" style="background-image: url('https://placehold.co/400x300/4D1B13/FFFFFF?text=Heritage');">
+                            <div class="absolute inset-0 bg-gradient-to-t from-earth-charcoal/95 via-earth-charcoal/30 to-transparent flex flex-col justify-end p-3.5">
+                                <span class="text-[8px] font-bold text-sienna-300 tracking-widest uppercase">The Story</span>
+                                <p class="text-xs text-white font-serif italic leading-tight">100% Sustainable Alpaca, Woven in Biella, Italy</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-2xl border border-earth-clay space-y-2 shadow-sm">
+                            <h4 class="text-[9px] font-bold text-sienna-500 tracking-wider uppercase">Craftsman & Provenance</h4>
+                            <p class="text-[10px] text-earth-charcoal/70 leading-relaxed font-light">
+                                Spun with zero chemical runoff. Every batch is certified organic, protecting local pasturelands in Piedmont from soil degradation.
+                            </p>
+                            <button class="inline-flex items-center text-[9px] text-sienna-600 font-bold hover:underline">
+                                Explore Italian Weavers <i data-lucide="chevron-right" class="w-3 h-3 ml-0.5"></i>
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 text-center">
+                            <div class="bg-white p-3 rounded-xl border border-earth-clay shadow-sm">
+                                <span class="block text-base font-extrabold text-sienna-500">Grade A</span>
+                                <span class="text-[8px] text-earth-charcoal/50 uppercase font-bold tracking-wider">Circularity rating</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-earth-clay shadow-sm">
+                                <span class="block text-base font-extrabold text-royal-500">CO₂ Neutral</span>
+                                <span class="text-[8px] text-earth-charcoal/50 uppercase font-bold tracking-wider">Product lifecycle</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } 
+            else if (tab === 'contact-loop') {
+                document.getElementById('sim-btn-contact-loop').className = "w-full text-left p-4 rounded-xl border-2 border-royal-500 bg-white shadow-md transition-all duration-200 flex items-start space-x-4";
+                
+                phoneLabel.innerText = "Brand Touchpoint Channel";
+                phoneTitle.innerText = "Register & Chat Loop";
+                
+                contentArea.innerHTML = `
+                    <div class="space-y-3.5">
+                        <div class="bg-royal-50/50 p-4 rounded-2xl border border-royal-100 text-center space-y-2">
+                            <p class="text-[11px] font-bold text-royal-900">Own This Product?</p>
+                            <p class="text-[10px] text-royal-800/80 leading-normal font-light">Register your premium 5-year warranty directly with the manufacturer in a single tap.</p>
+                            <button onclick="simulateAction('Ownership registered! Your warranty is active in our secure brand database.')" class="w-full py-2.5 bg-royal-500 hover:bg-royal-600 text-white rounded-xl text-[10px] font-bold transition-colors shadow-md shadow-royal-500/10">
+                                Register Ownership & Activate Warranty
+                            </button>
+                        </div>
+
+                        <!-- Brand loop action buttons -->
+                        <div class="space-y-2">
+                            <button onclick="simulateAction('Support connection established with Studio Tailors.')" class="w-full p-3 bg-white hover:bg-earth-sand/30 border border-earth-clay rounded-xl flex items-center justify-between text-left transition-all shadow-sm">
+                                <div class="flex items-center space-x-2.5">
+                                    <span class="p-1.5 bg-sienna-50 text-sienna-600 rounded-lg border border-sienna-100">
+                                        <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
+                                    </span>
+                                    <div>
+                                        <p class="text-[10px] font-bold text-earth-charcoal">Request Repair or Stitch Service</p>
+                                        <p class="text-[8px] text-earth-charcoal/50 font-light">Complimentary under warranty</p>
+                                    </div>
+                                </div>
+                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-earth-charcoal/30"></i>
+                            </button>
+
+                            <button onclick="simulateAction('Resell portal connected. Prepare trade-in options.')" class="w-full p-3 bg-white hover:bg-earth-sand/30 border border-earth-clay rounded-xl flex items-center justify-between text-left transition-all shadow-sm">
+                                <div class="flex items-center space-x-2.5">
+                                    <span class="p-1.5 bg-emerald-50 text-emerald-600 rounded-lg border border-emerald-100">
+                                        <i data-lucide="recycle" class="w-3.5 h-3.5"></i>
+                                    </span>
+                                    <div>
+                                        <p class="text-[10px] font-bold text-earth-charcoal">Verified Pre-Owned Resell Hub</p>
+                                        <p class="text-[8px] text-earth-charcoal/50 font-medium">Trade-in for secure store credit</p>
+                                    </div>
+                                </div>
+                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-earth-charcoal/30"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Regenerate Lucide Icons for dynamic content
+            lucide.createIcons();
+        }
+
+        // Mini Action Feedback inside Phone
+        function simulateAction(msg) {
+            const existingMsgBox = document.getElementById('simulator-feedback-toast');
+            if (existingMsgBox) existingMsgBox.remove();
+
+            const toastBox = document.createElement('div');
+            toastBox.id = "simulator-feedback-toast";
+            toastBox.className = "absolute bottom-16 left-4 right-4 bg-earth-charcoal text-white p-3 rounded-xl border border-white/10 shadow-2xl text-[10px] text-center transition-all duration-300 z-50";
+            toastBox.innerText = msg;
+            
+            document.getElementById('simulator-phone-screen').appendChild(toastBox);
+
+            setTimeout(() => {
+                toastBox.classList.add('opacity-0');
+                setTimeout(() => {
+                    toastBox.remove();
+                }, 400);
+            }, 3000);
+        }
+
+        // ==========================================
+        // CRYPTOGRAPHIC VERIFIABILITY SANDBOX ENGINE
+        // ==========================================
+        function updateCryptoSandbox() {
+            const slider = document.getElementById('crypt-slider');
+            const sliderValDisplay = document.getElementById('sandbox-slider-value');
+            const termRecycled = document.getElementById('term-recycled');
+            const sigHashBox = document.getElementById('sig-hash-box');
+            const sigStatusLabel = document.getElementById('sig-status-label');
+            const termLight = document.getElementById('terminal-light');
+            const cryptExplanation = document.getElementById('crypto-explanation');
+
+            const currentVal = slider.value;
+
+            // Update UI components
+            sliderValDisplay.innerText = `${currentVal}% Recycled`;
+            termRecycled.innerText = `${currentVal}%`;
+
+            // If value is 85 (the official verified database state), show green status
+            if (parseInt(currentVal) === 85) {
+                sigStatusLabel.innerText = "VERIFIED";
+                sigStatusLabel.className = "text-emerald-400 font-bold tracking-widest uppercase";
+                
+                sigHashBox.className = "p-3 bg-emerald-950/20 text-emerald-400 border border-emerald-900/50 rounded-xl text-[10px] break-all select-all text-center leading-normal transition-all duration-300 font-mono";
+                sigHashBox.innerText = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
+                
+                termLight.className = "w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse";
+                cryptExplanation.innerHTML = `Digital signature matches verified registry database mathematically. <span class="text-emerald-400 font-semibold">Integrity Verified.</span>`;
+            } else {
+                sigStatusLabel.innerText = "SIGNATURE TAMPERED & REJECTED";
+                sigStatusLabel.className = "text-red-500 font-bold tracking-widest uppercase animate-pulse";
+                
+                sigHashBox.className = "p-3 bg-red-950/20 text-red-400 border border-red-900/50 rounded-xl text-[10px] break-all select-all text-center leading-normal transition-all duration-300 font-mono";
+                
+                // Dynamically simulate a broken hash based on value offsets
+                const fauxHash = generateFauxHash(currentVal);
+                sigHashBox.innerText = fauxHash;
+                
+                termLight.className = "w-2.5 h-2.5 rounded-full bg-red-500";
+                cryptExplanation.innerHTML = `<span class="text-red-500 font-bold">WARNING:</span> This data has been altered! The cryptographic hash doesn't match the signature registered on the secure network. Verification failed.`;
+            }
+        }
+
+        function tamperData() {
+            // Tamper slider manually to a fraudulent level (e.g. 100%)
+            const slider = document.getElementById('crypt-slider');
+            slider.value = 100;
+            updateCryptoSandbox();
+        }
+
+        // Simple helper to create a pseudorandom hash sequence for sandbox interactivity
+        function generateFauxHash(input) {
+            let hash = "7d8f921a9c8";
+            for (let i = 0; i < 26; i++) {
+                const charCode = (Math.sin(parseInt(input) + i) * 10000).toString(16);
+                hash += charCode.substring(0, 2);
+            }
+            return hash.substring(0, 64);
+        }
+
+        // Form submission mocking with streamlined confirmation indicators
+        function handleFormSubmission(event) {
+            event.preventDefault();
+            const btn = document.getElementById('submit-form-btn');
+            const toast = document.getElementById('form-toast');
+
+            btn.disabled = true;
+            btn.innerHTML = `
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span>Sending...</span>
+            `;
+
+            setTimeout(() => {
+                btn.className = "w-full py-4 bg-emerald-600 text-white font-semibold rounded-2xl shadow-lg transition-all duration-300 flex items-center justify-center space-x-2";
+                btn.innerHTML = `
+                    <i data-lucide="check-circle" class="w-5 h-5"></i>
+                    <span>Inquiry Sent</span>
+                `;
+                toast.classList.remove('hidden');
+                lucide.createIcons();
+            }, 1200);
+        }
+    </script>
+</body>
+</html>
+```
