@@ -1,1195 +1,639 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dpp4you — Digital Product Passports worth showing off</title>
-    <meta name="description" content="dpp4you crafts beautiful, multilingual Digital Product Passports that turn EU ESPR compliance into a premium brand touchpoint. Themes, bespoke design and direct customer channels.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dpp4you — Beyond compliance: all in one DPP</title>
+  <meta name="description" content="The place where compliance makes your business stand out. LCA consultancy, multilingual product stories, Beyondtag and AI-ready products, all in one integrated service." />
+  <link rel="icon" type="image/png" href="assets/logo-mark.png" />
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta property="og:title" content="dpp4you — Beyond compliance: all in one DPP" />
+  <meta property="og:description" content="The place where compliance makes your business stand out." />
+  <meta property="og:type" content="website" />
 
-    <!-- Google Fonts: Inter (body) & Outfit (headings) — the paper-morphic type pairing -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,500;1,600;1,700&family=Inter:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0A3C85', deep: '#062D66', soft: '#1753A7' },
+            gold: { DEFAULT: '#B8963C', soft: '#D4B05A' },
+            olive: '#8A8A50',
+            cream: { DEFAULT: '#FFF8F0', deep: '#F5EDE0' },
+            coral: '#E8896F',
+            teal: { DEFAULT: '#5BB8A8', dark: '#3E9A8A' },
+            sunny: '#F5C842',
+            ink: { DEFAULT: '#0F1B3D', soft: '#3D4A6B' },
+          },
+          fontFamily: {
+            head: ['Nunito', 'sans-serif'],
+            accent: ['Fraunces', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          borderRadius: { '4xl': '2rem', '5xl': '2.5rem' },
+          boxShadow: {
+            soft: '0 8px 30px rgba(15, 27, 61, 0.06)',
+            lift: '0 16px 40px rgba(15, 27, 61, 0.10)',
+          },
+        },
+      },
+    };
+  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Lucide Icons CDN -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --navy: #0A3C85;
+      --navy-deep: #062D66;
+      --gold: #B8963C;
+      --cream: #FFF8F0;
+      --coral: #E8896F;
+      --teal: #5BB8A8;
+    }
 
-    <!-- Tailwind Custom Configuration: Paper-morphic palette -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        paper: {
-                            DEFAULT: '#f2ece0', // warm paper background
-                            deep: '#e7ded0',    // recessed paper
-                            edge: '#dcd1be',    // cut edge
-                            card: '#faf8f5',    // raised card stock
-                        },
-                        ink: {
-                            DEFAULT: '#2d2b27', // printed ink
-                            soft: '#656157',
-                            mute: '#9a958b',
-                        },
-                        terra: {
-                            light: '#d86f40',
-                            DEFAULT: '#c36237', // terracotta accent
-                            dark: '#9c4923',
-                        },
-                        inde: {
-                            light: '#4f93c9',
-                            DEFAULT: '#3273a6', // indigo accent
-                            dark: '#255a84',
-                        },
-                        leaf: {
-                            DEFAULT: '#3c8a5a',
-                            dark: '#2e6b45',
-                        }
-                    },
-                    fontFamily: {
-                        head: ['Outfit', 'sans-serif'],
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    html { -webkit-font-smoothing: antialiased; }
+    body {
+      background-color: var(--cream);
+      color: var(--navy-deep);
+      overflow-x: hidden;
+    }
 
-    <style>
-        :root {
-            --edge: rgba(139, 128, 107, .35);
-            --edge-soft: rgba(139, 128, 107, .22);
-            --shadow-hard: rgba(90, 80, 60, .15);
-            --shadow-harder: rgba(90, 80, 60, .18);
-        }
+    ::selection { background: rgba(184, 150, 60, 0.25); color: var(--navy-deep); }
 
-        /* Subtle graph-paper texture across the whole page */
-        body {
-            background-color: #f2ece0;
-            background-image:
-                linear-gradient(rgba(139, 128, 107, .045) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(139, 128, 107, .045) 1px, transparent 1px);
-            background-size: 24px 24px;
-        }
+    .accent-serif {
+      font-family: 'Fraunces', Georgia, serif;
+      font-style: italic;
+      font-weight: 600;
+    }
 
-        /* ---------------------------------------------
-           Paper-morphic primitives
-           Cards look like stacked sheets of card stock:
-           a solid warm border + a hard offset "paper" shadow.
-           On hover the sheet lifts; on press it flattens.
-        --------------------------------------------- */
-        .paper-card {
-            background: #faf8f5;
-            border: 1.5px solid var(--edge);
-            border-radius: 16px;
-            box-shadow: 2px 2px var(--shadow-hard), 0 6px 12px -2px rgba(90, 80, 60, .12);
-            transition: transform .25s cubic-bezier(.16, 1, .3, 1), box-shadow .25s ease, border-color .25s ease;
-        }
-        .paper-lift:hover, .paper-lift:focus-visible {
-            transform: translateY(-5px);
-            box-shadow: 5px 5px var(--shadow-hard), 0 16px 24px -4px var(--shadow-harder);
-            border-color: rgba(195, 98, 55, .45);
-            outline: none;
-        }
-        .paper-press:active {
-            transform: translateY(1px) translateX(1px);
-            box-shadow: .5px .5px var(--shadow-hard), 0 2px 4px -1px rgba(90, 80, 60, .08);
-        }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      padding: .95rem 1.75rem; border-radius: 9999px;
+      font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 1rem;
+      transition: transform .15s ease, background-color .15s ease, color .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+    .btn-primary { background: var(--navy); color: var(--cream); box-shadow: 0 8px 20px rgba(10, 60, 133, 0.22); }
+    .btn-primary:hover { background: var(--navy-deep); }
+    .btn-secondary { background: transparent; color: var(--navy); border: 2px solid rgba(10, 60, 133, 0.25); }
+    .btn-secondary:hover { background: var(--navy); color: var(--cream); border-color: var(--navy); }
+    .btn-gold { background: var(--gold); color: var(--navy-deep); box-shadow: 0 8px 20px rgba(184, 150, 60, 0.28); }
+    .btn-gold:hover { background: var(--gold-soft); }
 
-        /* Buttons behave like stamped paper tabs */
-        .paper-btn {
-            border: 1.5px solid transparent;
-            border-radius: 12px;
-            box-shadow: 2px 2px var(--shadow-hard), 0 4px 8px -1px rgba(90, 80, 60, .10);
-            transition: transform .2s cubic-bezier(.16, 1, .3, 1), box-shadow .2s ease, background-color .2s ease, border-color .2s ease;
-        }
-        .paper-btn:hover { transform: translateY(-2px); box-shadow: 4px 4px var(--shadow-hard), 0 8px 16px -2px var(--shadow-harder); }
-        .paper-btn:active { transform: translateY(1px) translateX(1px); box-shadow: .5px .5px var(--shadow-hard); }
+    .field {
+      width: 100%; padding: .95rem 1.15rem; border-radius: 1rem;
+      background: var(--cream); border: 1.5px solid rgba(10, 60, 133, 0.12);
+      font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--navy-deep);
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+    .field::placeholder { color: rgba(61, 74, 107, 0.5); }
+    .field:focus {
+      outline: none; border-color: var(--navy);
+      box-shadow: 0 0 0 4px rgba(10, 60, 133, 0.12);
+    }
 
-        /* Form fields are debossed: pressed INTO the sheet */
-        .paper-input {
-            background: #faf8f5;
-            border: 1.5px solid var(--edge-soft);
-            border-radius: 12px;
-            box-shadow: inset 0 2px 4px rgba(90, 80, 60, .10), 0 1px rgba(255, 255, 255, .9);
-            transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
-        }
-        .paper-input:focus {
-            outline: none;
-            background: #fff;
-            border-color: rgba(195, 98, 55, .5);
-            box-shadow: inset 0 2px 4px rgba(90, 80, 60, .06), 0 0 0 4px rgba(195, 98, 55, .15);
-        }
+    .card {
+      background: #fff; border-radius: 2rem; box-shadow: 0 8px 30px rgba(15, 27, 61, 0.06);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(15, 27, 61, 0.10); }
 
-        /* Gradient ink used for headline keywords */
-        .grad-ink {
-            background: linear-gradient(120deg, #c36237 10%, #3273a6 90%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    .eyebrow {
+      display: inline-block;
+      font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .9rem;
+      letter-spacing: .04em; color: var(--gold);
+    }
+    .logo-chip {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: #fff; border-radius: .85rem; padding: .4rem .7rem;
+      box-shadow: 0 4px 14px rgba(15, 27, 61, 0.10);
+    }
+    .logo-chip img { display: block; width: auto; object-fit: contain; }
+    .logo-chip .mark { height: 1.75rem; }
+    .logo-chip .word { height: 1.35rem; }
 
-        /* Signature gradient rule under section headings */
-        .head-rule { position: relative; display: inline-block; padding-bottom: .65rem; }
-        .head-rule::after {
-            content: "";
-            position: absolute;
-            bottom: 0; left: 12%;
-            width: 76%; height: 3px;
-            border-radius: 2px;
-            background: linear-gradient(90deg, #c36237, #3273a6);
-        }
+    .icon-bubble {
+      width: 3.5rem; height: 3.5rem; border-radius: 1.25rem;
+      display: flex; align-items: center; justify-content: center;
+    }
 
-        /* Dashed divider — like a tear-off coupon edge */
-        .tear-line { border-top: 1.5px dashed rgba(139, 128, 107, .30); }
+    .book {
+      position: relative; width: 16.5rem; height: 21.5rem;
+      border-radius: 0.4rem 1.2rem 1.2rem 0.4rem;
+      background: linear-gradient(155deg, var(--navy) 0%, var(--navy-deep) 100%);
+      box-shadow: -12px 18px 40px rgba(6, 45, 102, 0.28), inset 6px 0 0 rgba(255, 255, 255, 0.08);
+      color: var(--cream);
+    }
+    .book::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1rem;
+      background: linear-gradient(90deg, rgba(0,0,0,.25), rgba(0,0,0,.05));
+      border-radius: 0.4rem 0 0 0.4rem;
+    }
+    .book-inner { padding: 1.75rem 1.5rem 1.5rem 2.25rem; height: 100%; display: flex; flex-direction: column; }
 
-        /* Language chips */
-        .lang-chip {
-            display: inline-flex; align-items: center; gap: .4rem;
-            background: #fff;
-            border: 1.5px solid var(--edge);
-            color: #656157;
-            padding: .45rem .9rem;
-            border-radius: 10px;
-            font-size: .82rem; font-weight: 700;
-            cursor: pointer;
-            box-shadow: 1.5px 1.5px rgba(90, 80, 60, .12), 0 2px 4px rgba(45, 43, 39, .03);
-            transition: all .2s cubic-bezier(.16, 1, .3, 1);
-        }
-        .lang-chip:hover { border-color: rgba(195, 98, 55, .45); color: #2d2b27; transform: translateY(-1.5px); box-shadow: 3px 3px rgba(90, 80, 60, .12), 0 4px 8px rgba(90, 80, 60, .08); }
-        .lang-chip:active { transform: translateY(.5px) translateX(.5px); box-shadow: .5px .5px rgba(90, 80, 60, .12); }
-        .lang-chip.active {
-            background: linear-gradient(135deg, rgba(195, 98, 55, .12), rgba(50, 115, 166, .06));
-            border-color: #c36237; color: #c36237;
-            box-shadow: 2px 2px rgba(195, 98, 55, .15), 0 4px 8px rgba(195, 98, 55, .08);
-        }
+    .blob {
+      position: absolute; border-radius: 50%; filter: blur(60px); opacity: .55; pointer-events: none;
+    }
 
-        /* Scroll-reveal (disabled for reduced-motion users) */
-        .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.16, 1, .3, 1), transform .7s cubic-bezier(.16, 1, .3, 1); }
-        .reveal.in { opacity: 1; transform: none; }
-        @media (prefers-reduced-motion: reduce) {
-            .reveal { opacity: 1; transform: none; transition: none; }
-            html { scroll-behavior: auto; }
-        }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
 
-        /* Playful paper-cutout tilt for featured cards */
-        .cutout-tilt { rotate: -.6deg; }
+    .nav-link {
+      position: relative; font-family: 'Nunito', sans-serif; font-weight: 700;
+      color: var(--navy); font-size: .95rem;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; left: 0; right: 100%; bottom: -4px; height: 2px;
+      background: var(--gold); border-radius: 2px; transition: right .2s ease;
+    }
+    .nav-link:hover::after { right: 0; }
 
-        /* Paper scrollbar */
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #f2ece0; }
-        ::-webkit-scrollbar-thumb { background: #c8bba4; border-radius: 5px; border: 2px solid #f2ece0; }
-        ::-webkit-scrollbar-thumb:hover { background: #c36237; }
+    textarea.field { min-height: 7rem; resize: vertical; }
 
-        /* Hide scrollbars inside phone mockups */
-        .scrollbar-none::-webkit-scrollbar { display: none; }
-        .scrollbar-none { scrollbar-width: none; }
-    </style>
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .card:hover, .btn:hover { transform: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
 </head>
 
-<body class="text-ink font-sans antialiased selection:bg-terra/20 selection:text-terra-dark overflow-x-hidden">
+<body class="font-sans text-ink antialiased">
 
-    <!-- ============ NAVIGATION ============ -->
-    <header class="sticky top-0 z-50 w-full border-b-[1.5px]" style="background: rgba(242,236,224,.88); backdrop-filter: blur(10px); border-color: var(--edge-soft);">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
+  <!-- ============ NAV ============ -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-cream/85 border-b border-navy/5">
+    <nav class="max-w-7xl mx-auto px-6 h-[4.5rem] flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-3 shrink-0" aria-label="dpp4you home">
+        <span class="logo-chip">
+          <img src="assets/logo-mark.png" alt="" class="mark" />
+          <img src="assets/logo-wordmark.png" alt="dpp4you" class="word" />
+        </span>
+      </a>
 
-                <!-- Wordmark -->
-                <a href="#top" class="flex items-center space-x-2.5 group">
-                    <span class="w-9 h-9 rounded-xl bg-paper-card border-[1.5px] flex items-center justify-center shadow-[1.5px_1.5px_rgba(90,80,60,.15)] group-hover:-translate-y-0.5 transition-transform" style="border-color: var(--edge);">
-                        <i data-lucide="qr-code" class="w-5 h-5 text-terra"></i>
-                    </span>
-                    <span class="font-head font-extrabold text-lg tracking-tight text-ink">
-                        dpp<span class="text-terra">4</span>you
-                    </span>
-                </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#guide" class="nav-link">Guide</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#contact" class="btn btn-primary !py-2.5 !px-6 !text-sm">Book a call</a>
+      </div>
 
-                <!-- Desktop links -->
-                <nav class="hidden md:flex items-center space-x-1 text-sm font-semibold text-ink-soft">
-                    <a href="#why" class="px-3.5 py-2 rounded-lg hover:bg-paper-card hover:text-ink transition-colors">Why us</a>
-                    <a href="#simulator" class="px-3.5 py-2 rounded-lg hover:bg-paper-card hover:text-ink transition-colors">Live demo</a>
-                    <a href="#languages" class="px-3.5 py-2 rounded-lg hover:bg-paper-card hover:text-ink transition-colors">Languages</a>
-                    <a href="#templates" class="px-3.5 py-2 rounded-lg hover:bg-paper-card hover:text-ink transition-colors">Templates</a>
-                    <a href="#contact" class="paper-btn ml-3 inline-flex items-center px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-terra hover:bg-terra-light">
-                        Contact us
-                    </a>
-                </nav>
+      <button id="menu-btn" class="md:hidden p-2 text-navy" aria-label="Open menu" aria-expanded="false">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </nav>
 
-                <!-- Mobile: CTA + burger -->
-                <div class="md:hidden flex items-center space-x-2">
-                    <a href="#contact" class="paper-btn inline-flex items-center px-4 py-2 text-xs font-bold uppercase tracking-wider text-white bg-terra">
-                        Contact
-                    </a>
-                    <button onclick="toggleMenu()" aria-label="Toggle menu" class="paper-card paper-press w-10 h-10 flex items-center justify-center rounded-xl">
-                        <i data-lucide="menu" class="w-5 h-5 text-ink" id="menu-icon-open"></i>
-                        <i data-lucide="x" class="w-5 h-5 text-ink hidden" id="menu-icon-close"></i>
-                    </button>
-                </div>
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-5 pt-1 border-t border-navy/5 bg-cream">
+      <div class="flex flex-col gap-4">
+        <a href="#guide" class="nav-link mobile-link">Guide</a>
+        <a href="#services" class="nav-link mobile-link">Services</a>
+        <a href="#contact" class="nav-link mobile-link">Contact</a>
+        <a href="#contact" class="btn btn-primary mobile-link w-full">Book a call</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section id="top" class="relative overflow-hidden">
+    <div class="blob w-[28rem] h-[28rem] bg-coral/40 -top-24 -right-24"></div>
+    <div class="blob w-[22rem] h-[22rem] bg-sunny/40 top-40 right-40"></div>
+    <div class="blob w-[18rem] h-[18rem] bg-teal/30 bottom-0 left-0"></div>
+
+    <!-- confetti -->
+    <svg class="absolute top-28 left-[8%] w-16 h-16 text-gold/70 hidden lg:block" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+      <circle cx="8" cy="8" r="3.5" fill="#E8896F"/><circle cx="24" cy="4" r="2.5" fill="#5BB8A8"/>
+      <circle cx="40" cy="12" r="3" fill="#F5C842"/><circle cx="14" cy="26" r="2.5" fill="#0A3C85"/>
+      <circle cx="34" cy="30" r="3.5" fill="#E8896F"/><circle cx="52" cy="24" r="2.5" fill="#B8963C"/>
+      <circle cx="22" cy="46" r="3" fill="#5BB8A8"/><circle cx="46" cy="48" r="2.5" fill="#F5C842"/>
+      <circle cx="8" cy="52" r="2" fill="#0A3C85"/>
+    </svg>
+    <svg class="absolute bottom-24 left-[14%] w-24 h-8 hidden lg:block" viewBox="0 0 96 24" fill="none" aria-hidden="true">
+      <path d="M2 12 Q 10 2, 18 12 T 34 12 T 50 12 T 66 12 T 82 12 T 96 12" stroke="#5BB8A8" stroke-width="3" stroke-linecap="round" fill="none"/>
+    </svg>
+
+    <div class="relative max-w-7xl mx-auto px-6 pt-16 pb-24 md:pt-24 md:pb-32">
+      <div class="grid lg:grid-cols-2 gap-14 lg:gap-8 items-center">
+
+        <div class="reveal">
+          <h1 class="font-head font-extrabold tracking-tight text-navy-deep text-[2.75rem] leading-[1.05] sm:text-6xl lg:text-[4.25rem]">
+            Beyond compliance:<br class="hidden sm:block" /> all in one DPP
+          </h1>
+
+          <p class="mt-5 accent-serif text-gold text-[1.5rem] sm:text-3xl leading-snug">
+            the place where compliance makes your business stand out
+          </p>
+
+          <p class="mt-6 text-lg text-ink-soft max-w-xl leading-relaxed">
+            We turn EU compliance into your finest brand touchpoint. LCA consultancy,
+            multilingual product stories, Beyondtag and AI-ready products, all in one
+            integrated service.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#contact" class="btn btn-primary">Book a call</a>
+            <a href="#guide" class="btn btn-secondary">Get the free guide</a>
+          </div>
+        </div>
+
+        <div class="reveal relative flex justify-center lg:justify-end">
+          <div class="blob w-[20rem] h-[20rem] bg-gold/40 top-6 right-6 hidden sm:block"></div>
+          <img
+            src="assets/hero-illustration.png"
+            alt="Illustration of a person with a cart of DPP product tags beside a large phone scanning a QR code"
+            class="relative z-10 w-full max-w-[34rem] h-auto object-contain drop-shadow-xl"
+          />
+
+          <!-- floating confetti around illustration -->
+          <svg class="absolute -top-2 right-8 w-12 h-12 z-20 hidden sm:block" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path d="M4 24 L 10 18 L 16 24 L 22 18 L 28 24 L 34 18 L 40 24" stroke="#E8896F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg class="absolute bottom-6 -left-2 w-14 h-14 z-20 hidden sm:block" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+            <circle cx="8" cy="10" r="3" fill="#F5C842"/><circle cx="28" cy="6" r="2.5" fill="#0A3C85"/>
+            <circle cx="44" cy="14" r="3" fill="#5BB8A8"/><circle cx="16" cy="30" r="2.5" fill="#B8963C"/>
+            <circle cx="38" cy="34" r="3" fill="#E8896F"/><circle cx="10" cy="48" r="2" fill="#5BB8A8"/>
+            <circle cx="32" cy="50" r="2.5" fill="#F5C842"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- wavy divider -->
+    <div class="relative -mb-px">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="block w-full h-14 md:h-20 text-cream-deep" aria-hidden="true">
+        <path fill="currentColor" d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ============ GUIDE ============ -->
+  <section id="guide" class="bg-cream-deep relative overflow-hidden">
+    <svg class="absolute top-10 right-[6%] w-20 h-20 hidden lg:block" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+      <circle cx="10" cy="10" r="3.5" fill="#E8896F"/><circle cx="32" cy="6" r="2.5" fill="#B8963C"/>
+      <circle cx="54" cy="14" r="3" fill="#5BB8A8"/><circle cx="18" cy="32" r="2.5" fill="#0A3C85"/>
+      <circle cx="44" cy="36" r="3.5" fill="#F5C842"/><circle cx="68" cy="28" r="2.5" fill="#E8896F"/>
+      <circle cx="26" cy="58" r="3" fill="#B8963C"/><circle cx="56" cy="62" r="2.5" fill="#5BB8A8"/>
+      <path d="M4 72 L 12 66 L 20 72 L 28 66" stroke="#0A3C85" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    </svg>
+
+    <div class="max-w-7xl mx-auto px-6 py-24 md:py-32">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+        <div class="reveal">
+          <p class="eyebrow">Free guide</p>
+
+          <h2 class="mt-3 font-head font-extrabold tracking-tight text-navy-deep text-4xl sm:text-5xl leading-[1.08]">
+            Not being tangled in European compliance is <span class="accent-serif text-gold">actually possible</span>
+          </h2>
+
+          <p class="mt-6 text-lg text-ink-soft max-w-lg leading-relaxed">
+            Download our guide to find out if your business needs a DPP, and how to get ready.
+          </p>
+
+          <form id="guide-form" class="mt-8 max-w-md" novalidate>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email" name="email" id="guide-email" required
+                class="field flex-1" placeholder="Your work email" autocomplete="email"
+                aria-label="Your work email"
+              />
+              <button type="submit" class="btn btn-gold whitespace-nowrap">Send me the guide</button>
             </div>
-        </div>
+            <p class="mt-3 text-sm text-ink-soft/80">No spam. Just the guide, straight to your inbox.</p>
+          </form>
 
-        <!-- Mobile dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden border-t-[1.5px] px-4 py-3 space-y-1 text-sm font-semibold text-ink-soft" style="border-color: var(--edge-soft); background: rgba(250,248,245,.97);">
-            <a href="#why" onclick="toggleMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-paper transition-colors">Why us</a>
-            <a href="#simulator" onclick="toggleMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-paper transition-colors">Live demo</a>
-            <a href="#languages" onclick="toggleMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-paper transition-colors">Languages</a>
-            <a href="#templates" onclick="toggleMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-paper transition-colors">Templates</a>
-        </div>
-    </header>
-
-    <!-- ============ HERO ============ -->
-    <section id="top" class="relative overflow-hidden py-16 lg:py-24">
-        <!-- Soft paper blobs -->
-        <div class="absolute top-0 left-1/4 w-[42rem] h-[42rem] rounded-full blur-3xl -z-10 -translate-y-1/2" style="background: rgba(195,98,55,.10);"></div>
-        <div class="absolute bottom-0 right-1/4 w-[34rem] h-[34rem] rounded-full blur-3xl -z-10 translate-y-1/3" style="background: rgba(50,115,166,.10);"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-
-                <!-- Copy -->
-                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
-                    <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-terra bg-terra/10 border-[1.5px] border-terra/25 px-3.5 py-1.5 rounded-full">
-                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Digital Product Passports, crafted
-                    </span>
-
-                    <h1 class="font-head text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-ink leading-[1.05]">
-                        Your product passport,<br class="hidden sm:inline" />
-                        <span class="grad-ink">pressed on fine paper.</span>
-                    </h1>
-
-                    <p class="text-lg sm:text-xl text-ink-soft max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
-                        The EU Ecodesign regulation doesn't have to reduce your products to cold spreadsheets. We turn mandatory compliance into an <strong class="font-semibold text-ink">elegant brand portfolio</strong> — in every language your customers speak.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                        <a href="#simulator" class="paper-btn w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-terra hover:bg-terra-light text-white font-semibold rounded-xl">
-                            Launch live demo <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
-                        </a>
-                        <a href="#contact" class="paper-btn w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-paper-card hover:bg-white text-inde font-semibold rounded-xl" style="border-color: var(--edge);">
-                            Integrate today <i data-lucide="layers" class="ml-2 w-5 h-5"></i>
-                        </a>
-                    </div>
-
-                    <!-- Trust strip -->
-                    <div class="pt-6 tear-line grid grid-cols-3 gap-4 text-left max-w-xl mx-auto lg:mx-0">
-                        <div>
-                            <span class="block font-head text-2xl font-bold text-inde">ESPR</span>
-                            <span class="text-xs text-ink-mute uppercase tracking-widest font-semibold">Ready by design</span>
-                        </div>
-                        <div>
-                            <span class="block font-head text-2xl font-bold text-terra">24</span>
-                            <span class="text-xs text-ink-mute uppercase tracking-widest font-semibold">EU languages</span>
-                        </div>
-                        <div>
-                            <span class="block font-head text-2xl font-bold text-ink/80">Bespoke</span>
-                            <span class="text-xs text-ink-mute uppercase tracking-widest font-semibold">Visual themes</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Phone mockup (paper edition) -->
-                <div class="lg:col-span-5 relative w-full flex justify-center reveal">
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full opacity-50 blur-2xl -z-10 animate-pulse" style="background: linear-gradient(135deg, rgba(195,98,55,.25), rgba(50,115,166,.25));"></div>
-
-                    <div class="w-full max-w-[340px] bg-paper-deep rounded-[44px] p-3.5 border-4 border-paper-card relative paper-card" style="border-radius: 44px;">
-                        <!-- Notch -->
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 h-6 w-32 bg-paper-deep rounded-b-xl z-20 flex items-center justify-center">
-                            <span class="w-3 h-3 rounded-full bg-ink/20 inline-block mr-1"></span>
-                            <span class="w-1.5 h-1.5 rounded-full bg-ink/10 inline-block"></span>
-                        </div>
-
-                        <!-- Screen -->
-                        <div class="w-full bg-paper-card rounded-[32px] overflow-hidden min-h-[520px] text-ink flex flex-col justify-between text-xs border border-paper-edge">
-
-                            <!-- Status bar -->
-                            <div class="flex justify-between items-center px-6 pt-3.5 text-[10px] text-ink-mute font-medium">
-                                <span>9:41</span>
-                                <div class="flex items-center space-x-1.5">
-                                    <i data-lucide="signal" class="w-3 h-3"></i>
-                                    <i data-lucide="wifi" class="w-3 h-3"></i>
-                                    <i data-lucide="battery" class="w-3 h-3"></i>
-                                </div>
-                            </div>
-
-                            <!-- Passport header -->
-                            <div class="px-5 pt-4 pb-2">
-                                <div class="flex justify-between items-end pb-3" style="border-bottom: 1.5px dashed rgba(139,128,107,.30);">
-                                    <div>
-                                        <p class="text-[8px] uppercase tracking-widest text-terra font-bold">Digital Product Passport</p>
-                                        <h4 class="font-head text-lg font-bold text-ink tracking-tight mt-0.5">Signature Woolen Coat</h4>
-                                    </div>
-                                    <div class="w-7 h-7 rounded-lg bg-terra/10 border-[1.5px] border-terra/25 flex items-center justify-center">
-                                        <i data-lucide="qr-code" class="w-3.5 h-3.5 text-terra"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Screen content -->
-                            <div class="flex-1 px-5 py-3 overflow-y-auto space-y-3.5 scrollbar-none">
-                                <div class="relative rounded-xl overflow-hidden h-28 bg-cover bg-center border-[1.5px] border-paper-edge" style="background-image: url('https://placehold.co/400x300/9c4923/FAF8F5?text=Craftsmanship');">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent flex flex-col justify-end p-2.5">
-                                        <span class="text-[8px] font-semibold text-terra-light tracking-widest uppercase">Volume I</span>
-                                        <p class="text-[10px] text-white font-medium leading-tight">100% Sustainable Alpaca, Woven in Biella, Italy</p>
-                                    </div>
-                                </div>
-
-                                <div class="bg-white p-3 rounded-xl border-[1.5px] border-paper-edge space-y-2 shadow-[1.5px_1.5px_rgba(90,80,60,.10)]">
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-[10px] uppercase tracking-wider font-semibold text-terra-dark">Provenance & Materials</span>
-                                        <span class="px-2 py-0.5 bg-leaf/10 text-leaf-dark border border-leaf/30 text-[8px] rounded-full font-bold">Grade A</span>
-                                    </div>
-                                    <p class="text-[10px] text-ink-soft leading-relaxed font-light">
-                                        Each thread is traceable back to the farm of origin, guaranteeing ethical breeding, zero chemical runoff, and certified circularity.
-                                    </p>
-                                </div>
-
-                                <div class="bg-white p-3 rounded-xl border-[1.5px] border-paper-edge flex items-center justify-between shadow-[1.5px_1.5px_rgba(90,80,60,.10)]">
-                                    <div class="flex items-center space-x-2.5">
-                                        <div class="p-1.5 bg-inde/10 text-inde rounded-lg border border-inde/20">
-                                            <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
-                                        </div>
-                                        <div>
-                                            <p class="text-[10px] font-bold text-ink">Direct Brand Interface</p>
-                                            <p class="text-[8px] text-ink-mute">Repair, Resell, or Consultation</p>
-                                        </div>
-                                    </div>
-                                    <i data-lucide="arrow-right" class="w-3 h-3 text-ink-mute"></i>
-                                </div>
-                            </div>
-
-                            <!-- Screen footer -->
-                            <div class="p-4 bg-paper/60 flex items-center justify-between" style="border-top: 1.5px dashed rgba(139,128,107,.30);">
-                                <div class="flex items-center space-x-2">
-                                    <span class="w-2 h-2 rounded-full bg-leaf animate-pulse"></span>
-                                    <span class="text-[9px] text-ink-soft font-bold tracking-widest uppercase">Verified authentic</span>
-                                </div>
-                                <i data-lucide="badge-check" class="w-4 h-4 text-inde"></i>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
+          <div id="guide-success" class="hidden mt-8 max-w-md rounded-2xl bg-white p-6 shadow-soft">
+            <div class="flex items-start gap-3">
+              <span class="icon-bubble !w-10 !h-10 !rounded-xl bg-teal/15 text-teal-dark shrink-0">
+                <i data-lucide="check" class="w-5 h-5"></i>
+              </span>
+              <div>
+                <p class="font-head font-extrabold text-navy-deep">Check your inbox. The guide is on its way!</p>
+                <p class="mt-1 text-sm text-ink-soft">If it doesn't arrive in a few minutes, peek at your spam folder.</p>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- ============ PILLARS ============ -->
-    <section id="why" class="py-20 lg:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto text-center space-y-4 mb-16 reveal">
-                <span class="text-xs font-bold uppercase tracking-widest text-terra bg-terra/10 border-[1.5px] border-terra/25 px-3.5 py-1.5 rounded-full">The philosophy</span>
-                <h2 class="font-head text-3xl sm:text-4xl font-extrabold tracking-tight text-ink head-rule">
-                    Why comply when you can captivate?
-                </h2>
-                <p class="text-lg text-ink-soft font-light pt-2">
-                    EU regulation mandates Digital Product Passports. Most tools offer a boring compliance catalog. We elevate your passport into a primary brand touchpoint customers actually love to open.
+        <div class="reveal flex justify-center lg:justify-end">
+          <div class="relative">
+            <div class="blob w-72 h-72 bg-coral/30 -top-6 -right-6"></div>
+            <div class="blob w-56 h-56 bg-gold/35 bottom-0 -left-4"></div>
+
+            <!-- book mockup -->
+            <div class="book relative z-10 rotate-[-4deg] hover:rotate-0 transition-transform duration-300">
+              <div class="book-inner">
+                <div class="flex items-center">
+                  <span class="logo-chip !py-1.5">
+                    <img src="assets/logo-mark.png" alt="" class="mark" style="height: 1.6rem;" />
+                    <img src="assets/logo-wordmark.png" alt="dpp4you" class="word" style="height: 1.15rem;" />
+                  </span>
+                </div>
+                <p class="mt-5 text-[0.7rem] uppercase tracking-[0.2em] text-gold-soft font-semibold">A practical guide</p>
+                <h3 class="mt-2 font-head font-extrabold text-[1.35rem] leading-tight text-cream">
+                  Does your business need a <span class="accent-serif text-gold-soft">DPP?</span>
+                </h3>
+                <p class="mt-2 text-[0.8rem] text-cream/70 leading-relaxed">
+                  How to know, and how to get ready before the regulation knocks.
                 </p>
+              </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-                <!-- Pillar 1 -->
-                <div class="paper-card paper-lift p-8 flex flex-col justify-between reveal">
-                    <div class="space-y-6">
-                        <div class="w-12 h-12 bg-terra/10 text-terra border-[1.5px] border-terra/25 rounded-xl flex items-center justify-center">
-                            <i data-lucide="layout-template" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-head text-xl font-bold text-ink">It's your brand portfolio</h3>
-                        <p class="text-sm text-ink-soft leading-relaxed">
-                            Showcase beautiful product photography, interactive material stories, craftsman diaries and origin maps. Our passport design turns regulatory data into storytelling that amplifies brand value.
-                        </p>
-                    </div>
-                    <div class="pt-6 mt-6 tear-line">
-                        <a href="#templates" class="inline-flex items-center text-xs font-bold text-terra uppercase tracking-wider hover:text-terra-dark transition-colors">
-                            Explore templates <i data-lucide="arrow-right" class="ml-1 w-3.5 h-3.5"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Pillar 2 -->
-                <div class="paper-card paper-lift p-8 flex flex-col justify-between reveal">
-                    <div class="space-y-6">
-                        <div class="w-12 h-12 bg-inde/10 text-inde border-[1.5px] border-inde/25 rounded-xl flex items-center justify-center">
-                            <i data-lucide="users" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-head text-xl font-bold text-ink">Direct-to-owner contact</h3>
-                        <p class="text-sm text-ink-soft leading-relaxed">
-                            Open a direct channel with the person holding your product. Enable repair bookings, single-tap warranty registration, local recycling guidance and a secure secondary-resale marketplace.
-                        </p>
-                    </div>
-                    <div class="pt-6 mt-6 tear-line">
-                        <a href="#simulator" class="inline-flex items-center text-xs font-bold text-inde uppercase tracking-wider hover:text-inde-dark transition-colors">
-                            See channel in action <i data-lucide="arrow-right" class="ml-1 w-3.5 h-3.5"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Pillar 3: Multilingual -->
-                <div class="paper-card paper-lift p-8 flex flex-col justify-between reveal">
-                    <div class="space-y-6">
-                        <div class="w-12 h-12 bg-leaf/10 text-leaf border-[1.5px] border-leaf/25 rounded-xl flex items-center justify-center">
-                            <i data-lucide="languages" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-head text-xl font-bold text-ink">Multilingual by default</h3>
-                        <p class="text-sm text-ink-soft leading-relaxed">
-                            Europe buys in 24 languages. Every passport we ship speaks all of them — automatically served in the visitor's own language, with no extra work for your team.
-                        </p>
-                    </div>
-                    <div class="pt-6 mt-6 tear-line">
-                        <a href="#languages" class="inline-flex items-center text-xs font-bold text-leaf uppercase tracking-wider hover:text-leaf-dark transition-colors">
-                            Try it live <i data-lucide="arrow-right" class="ml-1 w-3.5 h-3.5"></i>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
+            <!-- confetti near book -->
+            <svg class="absolute -bottom-6 -right-8 w-16 h-16 z-20" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <circle cx="8" cy="12" r="3" fill="#F5C842"/><circle cx="28" cy="6" r="2.5" fill="#E8896F"/>
+              <circle cx="48" cy="16" r="3" fill="#5BB8A8"/><circle cx="18" cy="34" r="2.5" fill="#B8963C"/>
+              <circle cx="42" cy="40" r="3" fill="#0A3C85"/><circle cx="12" cy="54" r="2.5" fill="#E8896F"/>
+              <circle cx="36" cy="56" r="2" fill="#F5C842"/>
+            </svg>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <!-- ============ INTERACTIVE SIMULATOR ============ -->
-    <section id="simulator" class="py-20 lg:py-24 bg-paper/60 border-y-[1.5px]" style="border-color: var(--edge-soft);">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="relative -mb-px">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="block w-full h-14 md:h-20 text-cream" aria-hidden="true">
+        <path fill="currentColor" d="M0,40 C240,0 480,80 720,40 C960,0 1200,80 1440,40 L1440,80 L0,80 Z"></path>
+      </svg>
+    </div>
+  </section>
 
-                <!-- Controls -->
-                <div class="lg:col-span-6 space-y-8 reveal">
-                    <div>
-                        <span class="text-xs font-bold uppercase tracking-widest text-inde bg-inde/10 border-[1.5px] border-inde/25 px-3.5 py-1.5 rounded-full">Interactive sandbox</span>
-                        <h2 class="font-head text-3xl sm:text-4xl font-extrabold tracking-tight text-ink mt-4">
-                            Feel the difference a<br />
-                            <span class="grad-ink">crafted passport</span> makes
-                        </h2>
-                        <p class="text-base text-ink-soft mt-4 leading-relaxed">
-                            Pick a module below and watch the simulated smartphone transform a legal obligation into a high-fidelity consumer experience — right on this page.
-                        </p>
-                    </div>
+  <!-- ============ SERVICES ============ -->
+  <section id="services" class="relative overflow-hidden">
+    <div class="blob w-[24rem] h-[24rem] bg-teal/25 -top-20 left-0"></div>
+    <div class="blob w-[20rem] h-[20rem] bg-gold/25 bottom-10 right-0"></div>
 
-                    <div class="space-y-4">
-                        <button onclick="switchSimTab('compliance')" id="sim-btn-compliance" class="paper-card paper-press w-full text-left p-4 flex items-start space-x-4">
-                            <div class="p-2.5 bg-ink/5 text-ink-soft border-[1.5px] border-paper-edge rounded-lg">
-                                <i data-lucide="file-text" class="w-5 h-5"></i>
-                            </div>
-                            <div class="flex-1">
-                                <div class="flex items-center justify-between">
-                                    <span class="font-bold text-ink">1. Strict ESPR compliance view</span>
-                                    <span class="text-[10px] bg-ink/5 px-2 py-0.5 rounded text-ink-soft font-semibold uppercase tracking-wider border border-paper-edge">Required minimum</span>
-                                </div>
-                                <p class="text-xs text-ink-soft mt-1">The mandatory regulatory spreadsheet. Cold metrics, raw IDs, compliance standards.</p>
-                            </div>
-                        </button>
+    <div class="max-w-7xl mx-auto px-6 py-24 md:py-32 relative">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <p class="eyebrow">What you get</p>
+        <h2 class="mt-3 font-head font-extrabold tracking-tight text-navy-deep text-4xl sm:text-5xl leading-[1.08]">
+          All the benefits of an <span class="accent-serif text-gold">integrated service</span>
+        </h2>
+        <p class="mt-5 text-lg text-ink-soft leading-relaxed">
+          Not a pile of disconnected tools. One partner for the whole journey, from data to story to discovery.
+        </p>
+      </div>
 
-                        <button onclick="switchSimTab('portfolio')" id="sim-btn-portfolio" class="paper-card paper-press w-full text-left p-4 flex items-start space-x-4">
-                            <div class="p-2.5 bg-terra/10 text-terra border-[1.5px] border-terra/25 rounded-lg">
-                                <i data-lucide="image" class="w-5 h-5"></i>
-                            </div>
-                            <div class="flex-1">
-                                <div class="flex items-center justify-between">
-                                    <span class="font-bold text-ink">2. Premium portfolio showcase</span>
-                                    <span class="text-[10px] bg-terra/10 text-terra px-2 py-0.5 rounded font-semibold uppercase tracking-wider border border-terra/25">Our feature</span>
-                                </div>
-                                <p class="text-xs text-ink-soft mt-1">Rich graphics, craftsmanship stories, video embeds and detailed material provenance.</p>
-                            </div>
-                        </button>
+      <div class="mt-14 grid sm:grid-cols-2 gap-6">
+        <!-- Card 1 -->
+        <article class="card p-8 sm:p-10 reveal">
+          <div class="icon-bubble bg-navy/10 text-navy">
+            <i data-lucide="layers" class="w-6 h-6"></i>
+          </div>
+          <h3 class="mt-6 font-head font-extrabold text-2xl text-navy-deep leading-snug">
+            Beyond surface, the full picture
+          </h3>
+          <p class="mt-3 text-ink-soft leading-relaxed">
+            We walk with you step by step on your LCA, with personalized consultancy.
+          </p>
+        </article>
 
-                        <button onclick="switchSimTab('contact-loop')" id="sim-btn-contact-loop" class="paper-card paper-press w-full text-left p-4 flex items-start space-x-4">
-                            <div class="p-2.5 bg-inde/10 text-inde border-[1.5px] border-inde/25 rounded-lg">
-                                <i data-lucide="refresh-cw" class="w-5 h-5"></i>
-                            </div>
-                            <div class="flex-1">
-                                <div class="flex items-center justify-between">
-                                    <span class="font-bold text-ink">3. Direct brand–customer loop</span>
-                                    <span class="text-[10px] bg-inde/10 text-inde px-2 py-0.5 rounded font-semibold uppercase tracking-wider border border-inde/25">Our feature</span>
-                                </div>
-                                <p class="text-xs text-ink-soft mt-1">One-click repair schedules, assistance channels and authentic resale portals.</p>
-                            </div>
-                        </button>
-                    </div>
-                </div>
+        <!-- Card 2 -->
+        <article class="card p-8 sm:p-10 reveal">
+          <div class="icon-bubble bg-teal/15 text-teal-dark">
+            <i data-lucide="languages" class="w-6 h-6"></i>
+          </div>
+          <h3 class="mt-6 font-head font-extrabold text-2xl text-navy-deep leading-snug">
+            Your product's story, ready to be told
+          </h3>
+          <p class="mt-3 text-ink-soft leading-relaxed">
+            For everyone, in their own language.
+          </p>
+        </article>
 
-                <!-- Simulated phone -->
-                <div class="lg:col-span-6 flex justify-center reveal">
-                    <div class="w-full max-w-[360px] bg-paper-deep rounded-[48px] p-4 border-4 border-paper-card relative paper-card" style="border-radius: 48px;">
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 h-6 w-36 bg-paper-deep rounded-b-2xl z-20 flex items-center justify-center">
-                            <span class="w-12 h-1 bg-ink/10 rounded-full inline-block"></span>
-                        </div>
+        <!-- Card 3 -->
+        <article class="card p-8 sm:p-10 reveal">
+          <div class="icon-bubble bg-coral/15 text-coral">
+            <i data-lucide="tags" class="w-6 h-6"></i>
+          </div>
+          <h3 class="mt-6 font-head font-extrabold text-2xl text-navy-deep leading-snug">
+            Not just a digital tag
+          </h3>
+          <p class="mt-3 text-ink-soft leading-relaxed">
+            With our platform Beyondtag, clients find your products for their exact needs.
+            A catalogue encyclopedia at their fingertips.
+          </p>
+        </article>
 
-                        <div id="simulator-phone-screen" class="w-full bg-paper-card rounded-[36px] overflow-hidden min-h-[560px] text-ink flex flex-col justify-between relative border border-paper-edge shadow-inner">
+        <!-- Card 4 -->
+        <article class="card p-8 sm:p-10 reveal">
+          <div class="icon-bubble bg-gold/20 text-gold">
+            <i data-lucide="sparkles" class="w-6 h-6"></i>
+          </div>
+          <h3 class="mt-6 font-head font-extrabold text-2xl text-navy-deep leading-snug">
+            Future ready
+          </h3>
+          <p class="mt-3 text-ink-soft leading-relaxed">
+            Agentic integration to bring your products into the AI chats people already have.
+          </p>
+        </article>
+      </div>
 
-                            <!-- Status bar -->
-                            <div class="flex justify-between items-center px-6 pt-3.5 text-[10px] text-ink-mute font-medium">
-                                <span>14:20</span>
-                                <div class="flex items-center space-x-1.5">
-                                    <i data-lucide="signal" class="w-3.5 h-3.5"></i>
-                                    <span class="font-bold text-[8px] bg-paper-deep text-ink px-1 py-0.5 rounded">5G</span>
-                                    <i data-lucide="battery" class="w-3.5 h-3.5"></i>
-                                </div>
-                            </div>
+      <!-- decorative zigzag -->
+      <svg class="mx-auto mt-16 w-40 h-8 text-gold/60 hidden sm:block" viewBox="0 0 160 24" fill="none" aria-hidden="true">
+        <path d="M2 12 L 14 4 L 26 12 L 38 4 L 50 12 L 62 4 L 74 12 L 86 4 L 98 12 L 110 4 L 122 12 L 134 4 L 146 12 L 158 4" stroke="#B8963C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
 
-                            <!-- Title -->
-                            <div class="px-5 pt-4 pb-2" style="border-bottom: 1.5px dashed rgba(139,128,107,.30);">
-                                <div class="flex justify-between items-end pb-3">
-                                    <div>
-                                        <p id="sim-phone-label" class="text-[8px] uppercase tracking-widest text-terra font-bold">dpp4you • Portfolio</p>
-                                        <h3 id="sim-phone-title" class="font-head text-lg font-bold text-ink tracking-tight mt-0.5">Signature Woolen Coat</h3>
-                                    </div>
-                                    <span class="w-8 h-8 rounded-lg bg-paper border-[1.5px] border-paper-edge flex items-center justify-center">
-                                        <i data-lucide="sparkles" class="w-4 h-4 text-terra animate-pulse"></i>
-                                    </span>
-                                </div>
-                            </div>
+    <div class="relative -mb-px">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="block w-full h-14 md:h-20 text-cream-deep" aria-hidden="true">
+        <path fill="currentColor" d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z"></path>
+      </svg>
+    </div>
+  </section>
 
-                            <!-- Dynamic content -->
-                            <div id="sim-content-area" class="flex-1 px-5 py-4 overflow-y-auto space-y-4 max-h-[400px] scrollbar-none"></div>
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="bg-cream-deep relative overflow-hidden">
+    <svg class="absolute bottom-16 left-[5%] w-16 h-16 hidden lg:block" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+      <circle cx="8" cy="10" r="3" fill="#0A3C85"/><circle cx="28" cy="6" r="2.5" fill="#E8896F"/>
+      <circle cx="48" cy="14" r="3" fill="#F5C842"/><circle cx="16" cy="32" r="2.5" fill="#5BB8A8"/>
+      <circle cx="40" cy="38" r="3" fill="#B8963C"/><circle cx="10" cy="54" r="2.5" fill="#E8896F"/>
+    </svg>
 
-                            <!-- Verified footer -->
-                            <div class="p-4 bg-paper/60 flex items-center justify-between" style="border-top: 1.5px dashed rgba(139,128,107,.30);">
-                                <div class="flex items-center space-x-2">
-                                    <span class="flex h-2 w-2 relative">
-                                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-leaf opacity-75"></span>
-                                        <span class="relative inline-flex rounded-full h-2 w-2 bg-leaf"></span>
-                                    </span>
-                                    <span class="text-[8px] text-ink-soft font-bold tracking-widest uppercase">Verified authentic · ESPR aligned</span>
-                                </div>
-                                <i data-lucide="badge-check" class="w-4 h-4 text-inde"></i>
-                            </div>
+    <div class="max-w-7xl mx-auto px-6 py-24 md:py-32">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <p class="eyebrow">Get in touch</p>
+        <h2 class="mt-3 font-head font-extrabold tracking-tight text-navy-deep text-4xl sm:text-5xl leading-[1.08]">
+          Let's explore your needs <span class="accent-serif text-gold">together</span>
+        </h2>
+        <p class="mt-5 text-lg text-ink-soft leading-relaxed">
+          Tell us about your products and your compliance goals. We'll map the fastest path
+          to a DPP that makes your business stand out.
+        </p>
+      </div>
 
-                        </div>
-                    </div>
-                </div>
-
+      <div class="mt-14 grid lg:grid-cols-5 gap-8 items-start">
+        <!-- form -->
+        <div class="lg:col-span-3 card p-8 sm:p-10 reveal">
+          <form id="contact-form" novalidate>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label for="form-name" class="block text-sm font-semibold text-navy-deep mb-2 font-head">Name</label>
+                <input type="text" id="form-name" name="name" required class="field" placeholder="Alex Mercer" autocomplete="name" />
+              </div>
+              <div>
+                <label for="form-email" class="block text-sm font-semibold text-navy-deep mb-2 font-head">Work email</label>
+                <input type="email" id="form-email" name="email" required class="field" placeholder="alex@company.com" autocomplete="email" />
+              </div>
             </div>
-        </div>
-    </section>
-
-    <!-- ============ MULTILINGUAL SECTION ============ -->
-    <section id="languages" class="py-20 lg:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-
-                <!-- Copy + chips -->
-                <div class="lg:col-span-7 space-y-8 reveal">
-                    <div>
-                        <span class="text-xs font-bold uppercase tracking-widest text-leaf bg-leaf/10 border-[1.5px] border-leaf/25 px-3.5 py-1.5 rounded-full">Multilingual by default</span>
-                        <h2 class="font-head text-3xl sm:text-4xl font-extrabold tracking-tight text-ink mt-4">
-                            One passport.<br />
-                            <span class="grad-ink">Every European language.</span>
-                        </h2>
-                        <p class="text-base text-ink-soft mt-4 leading-relaxed max-w-xl">
-                            The EU market speaks <strong class="font-semibold text-ink">24 official languages</strong> — and your customers expect to read about what they own in their own. Every passport we deliver is available in all of them, automatically served from the visitor's device settings. No plug-ins, no duplicate work, no extra cost.
-                        </p>
-                    </div>
-
-                    <!-- Interactive chips -->
-                    <div>
-                        <p class="text-xs font-bold uppercase tracking-widest text-ink-mute mb-3 flex items-center gap-2">
-                            <i data-lucide="mouse-pointer-click" class="w-3.5 h-3.5"></i> Try it live — tap a language
-                        </p>
-                        <div class="flex flex-wrap gap-2" id="lang-chips">
-                            <button class="lang-chip active" onclick="setLang('en', this)">🇬🇧 EN</button>
-                            <button class="lang-chip" onclick="setLang('it', this)">🇮🇹 IT</button>
-                            <button class="lang-chip" onclick="setLang('fr', this)">🇫🇷 FR</button>
-                            <button class="lang-chip" onclick="setLang('de', this)">🇩🇪 DE</button>
-                            <button class="lang-chip" onclick="setLang('es', this)">🇪🇸 ES</button>
-                            <button class="lang-chip" onclick="setLang('pt', this)">🇵🇹 PT</button>
-                            <button class="lang-chip" onclick="setLang('nl', this)">🇳🇱 NL</button>
-                            <button class="lang-chip" onclick="setLang('pl', this)">🇵🇱 PL</button>
-                            <button class="lang-chip" onclick="setLang('sv', this)">🇸🇪 SV</button>
-                            <button class="lang-chip" onclick="setLang('da', this)">🇩🇰 DA</button>
-                        </div>
-                        <p class="text-xs text-ink-mute mt-4 leading-relaxed">
-                            <i data-lucide="plus" class="w-3 h-3 inline-block align-[-2px]"></i>
-                            <span class="font-mono font-semibold">BG · HR · CS · ET · FI · EL · HU · GA · LV · LT · MT · RO · SK · SL</span><br>
-                            Full coverage of all 24 official EU languages on every plan.
-                        </p>
-                    </div>
-
-                    <!-- Value bullets -->
-                    <div class="grid sm:grid-cols-2 gap-4 text-sm">
-                        <div class="paper-card p-4 flex items-start space-x-3">
-                            <div class="p-1.5 bg-leaf/10 text-leaf border border-leaf/25 rounded-lg mt-0.5">
-                                <i data-lucide="wand-2" class="w-4 h-4"></i>
-                            </div>
-                            <p class="text-ink-soft"><strong class="text-ink font-semibold">Automatic detection</strong> — the passport opens in the customer's language from the very first scan.</p>
-                        </div>
-                        <div class="paper-card p-4 flex items-start space-x-3">
-                            <div class="p-1.5 bg-inde/10 text-inde border border-inde/25 rounded-lg mt-0.5">
-                                <i data-lucide="pen-line" class="w-4 h-4"></i>
-                            </div>
-                            <p class="text-ink-soft"><strong class="text-ink font-semibold">Editorial control</strong> — override any translation to keep your brand voice perfect everywhere.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Live preview card -->
-                <div class="lg:col-span-5 flex justify-center reveal">
-                    <div class="w-full max-w-sm">
-                        <div id="lang-preview" class="paper-card cutout-tilt p-6 space-y-4 transition-all duration-300">
-                            <div class="flex justify-between items-start pb-3" style="border-bottom: 1.5px dashed rgba(139,128,107,.30);">
-                                <div>
-                                    <p id="lp-tag" class="text-[10px] uppercase tracking-widest text-terra font-bold">Digital Product Passport</p>
-                                    <h4 class="font-head text-xl font-bold text-ink tracking-tight mt-1">Signature Woolen Coat</h4>
-                                </div>
-                                <span class="w-9 h-9 rounded-lg bg-terra/10 border-[1.5px] border-terra/25 flex items-center justify-center shrink-0">
-                                    <i data-lucide="qr-code" class="w-4 h-4 text-terra"></i>
-                                </span>
-                            </div>
-
-                            <div class="bg-white p-4 rounded-xl border-[1.5px] border-paper-edge space-y-2 shadow-[1.5px_1.5px_rgba(90,80,60,.10)]">
-                                <div class="flex items-center justify-between">
-                                    <span id="lp-mat" class="text-[11px] uppercase tracking-wider font-semibold text-terra-dark">Materials & Provenance</span>
-                                    <span class="px-2 py-0.5 bg-leaf/10 text-leaf-dark border border-leaf/30 text-[9px] rounded-full font-bold">Grade A</span>
-                                </div>
-                                <p id="lp-story" class="text-xs text-ink-soft leading-relaxed font-light">100% sustainable alpaca, woven in Biella, Italy.</p>
-                            </div>
-
-                            <button id="lp-btn" class="paper-btn w-full py-3 bg-inde hover:bg-inde-light text-white text-sm font-semibold rounded-xl">
-                                Register warranty
-                            </button>
-
-                            <div class="flex items-center justify-between pt-1">
-                                <div class="flex items-center space-x-2">
-                                    <span class="w-2 h-2 rounded-full bg-leaf animate-pulse"></span>
-                                    <span id="lp-ver" class="text-[10px] text-ink-soft font-bold tracking-widest uppercase">Verified authentic</span>
-                                </div>
-                                <span id="lp-lang-tag" class="text-[10px] font-mono font-bold text-ink-mute bg-paper border border-paper-edge px-2 py-0.5 rounded">EN</span>
-                            </div>
-                        </div>
-                        <p class="text-center text-xs text-ink-mute mt-4 italic">Live preview — this is exactly what your customer sees.</p>
-                    </div>
-                </div>
-
+            <div class="mt-4">
+              <label for="form-company" class="block text-sm font-semibold text-navy-deep mb-2 font-head">Company</label>
+              <input type="text" id="form-company" name="company" required class="field" placeholder="Signature Clothing S.p.A." autocomplete="organization" />
             </div>
-        </div>
-    </section>
-
-    <!-- ============ HOW IT WORKS ============ -->
-    <section id="how" class="py-20 lg:py-24 bg-paper/60 border-y-[1.5px]" style="border-color: var(--edge-soft);">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto text-center space-y-4 mb-16 reveal">
-                <span class="text-xs font-bold uppercase tracking-widest text-terra bg-terra/10 border-[1.5px] border-terra/25 px-3.5 py-1.5 rounded-full">Effortless onboarding</span>
-                <h2 class="font-head text-3xl sm:text-4xl font-extrabold tracking-tight text-ink head-rule">Live in three simple steps</h2>
+            <div class="mt-4">
+              <label for="form-message" class="block text-sm font-semibold text-navy-deep mb-2 font-head">How can we help?</label>
+              <textarea id="form-message" name="message" rows="4" class="field" placeholder="Tell us about your products, your sector, your timeline…"></textarea>
             </div>
+            <button type="submit" class="btn btn-primary mt-6 w-full sm:w-auto">Book my call</button>
+          </form>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="paper-card paper-lift p-8 space-y-5 reveal">
-                    <div class="flex items-center justify-between">
-                        <span class="font-head text-5xl font-extrabold text-terra/25">01</span>
-                        <div class="w-11 h-11 bg-terra/10 text-terra border-[1.5px] border-terra/25 rounded-xl flex items-center justify-center">
-                            <i data-lucide="database" class="w-5 h-5"></i>
-                        </div>
-                    </div>
-                    <h3 class="font-head text-lg font-bold text-ink">Connect your data</h3>
-                    <p class="text-sm text-ink-soft leading-relaxed">We plug into your existing ERP, PLM or even plain spreadsheets. No migration, no re-platforming — your product data stays where it lives today.</p>
-                </div>
-
-                <div class="paper-card paper-lift p-8 space-y-5 reveal">
-                    <div class="flex items-center justify-between">
-                        <span class="font-head text-5xl font-extrabold text-inde/25">02</span>
-                        <div class="w-11 h-11 bg-inde/10 text-inde border-[1.5px] border-inde/25 rounded-xl flex items-center justify-center">
-                            <i data-lucide="palette" class="w-5 h-5"></i>
-                        </div>
-                    </div>
-                    <h3 class="font-head text-lg font-bold text-ink">Design your passport</h3>
-                    <p class="text-sm text-ink-soft leading-relaxed">Pick a conversion-optimized theme or let our studio craft a bespoke layout that mirrors your physical labels and brand guidelines.</p>
-                </div>
-
-                <div class="paper-card paper-lift p-8 space-y-5 reveal">
-                    <div class="flex items-center justify-between">
-                        <span class="font-head text-5xl font-extrabold text-leaf/25">03</span>
-                        <div class="w-11 h-11 bg-leaf/10 text-leaf border-[1.5px] border-leaf/25 rounded-xl flex items-center justify-center">
-                            <i data-lucide="scan-line" class="w-5 h-5"></i>
-                        </div>
-                    </div>
-                    <h3 class="font-head text-lg font-bold text-ink">Publish & scan</h3>
-                    <p class="text-sm text-ink-soft leading-relaxed">We generate the QR data carriers for your products. Update content any time — every scan everywhere reflects it instantly, in 24 languages.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ TEMPLATES ============ -->
-    <section id="templates" class="py-20 lg:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 reveal">
-                <div class="space-y-4 max-w-xl">
-                    <span class="text-xs font-bold uppercase tracking-widest text-terra bg-terra/10 border-[1.5px] border-terra/25 px-3.5 py-1.5 rounded-full">Exquisite customization</span>
-                    <h2 class="font-head text-3xl sm:text-4xl font-extrabold tracking-tight text-ink">
-                        Pick a theme, or let us press a <span class="grad-ink">bespoke edition.</span>
-                    </h2>
-                </div>
-                <div class="text-left md:text-right">
-                    <p class="text-sm text-ink-soft max-w-sm leading-relaxed mb-4">
-                        Start from a conversion-optimized theme, or work with our design studio on a completely custom passport experience.
-                    </p>
-                    <a href="#contact" class="inline-flex items-center text-xs font-bold text-inde uppercase tracking-widest hover:text-inde-dark transition-colors">
-                        Inquire custom design <i data-lucide="arrow-right" class="ml-1 w-4 h-4"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-                <!-- Theme 1 -->
-                <div class="paper-card paper-lift overflow-hidden reveal">
-                    <div class="h-48 bg-terra/5 flex items-center justify-center p-6" style="border-bottom: 1.5px dashed rgba(139,128,107,.30);">
-                        <div class="w-full max-w-[140px] bg-paper-card rounded-xl p-2.5 border-[1.5px] border-paper-edge shadow-[2px_2px_rgba(90,80,60,.15)] space-y-1.5">
-                            <div class="w-full h-12 bg-cover bg-center rounded-lg" style="background-image: url('https://placehold.co/100x100/9c4923/FAF8F5?text=Luxury');"></div>
-                            <div class="h-2 w-12 bg-terra rounded"></div>
-                            <div class="h-1.5 w-16 bg-paper-edge rounded"></div>
-                            <div class="h-1.5 w-8 bg-paper-edge rounded"></div>
-                        </div>
-                    </div>
-                    <div class="p-6 space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs text-terra font-bold uppercase tracking-wider">Luxury artisan</span>
-                            <span class="text-[10px] bg-paper px-1.5 py-0.5 rounded text-ink-soft font-semibold font-mono border border-paper-edge">ID: 01</span>
-                        </div>
-                        <h4 class="font-head text-base font-bold text-ink">Sienna Heritage</h4>
-                        <p class="text-xs text-ink-soft leading-relaxed">Perfect for luxury leather, boutique apparel, high-end watches and craft products.</p>
-                    </div>
-                </div>
-
-                <!-- Theme 2 -->
-                <div class="paper-card paper-lift overflow-hidden reveal">
-                    <div class="h-48 bg-inde/5 flex items-center justify-center p-6" style="border-bottom: 1.5px dashed rgba(139,128,107,.30);">
-                        <div class="w-full max-w-[140px] bg-paper-card rounded-xl p-2.5 border-[1.5px] border-paper-edge shadow-[2px_2px_rgba(90,80,60,.15)] space-y-1.5">
-                            <div class="flex justify-between items-center">
-                                <div class="h-2 w-10 bg-inde rounded"></div>
-                                <div class="w-2 h-2 rounded-full bg-inde-light"></div>
-                            </div>
-                            <div class="h-8 bg-white rounded flex items-center justify-center text-[8px] text-inde border border-inde/25 font-mono">TECH-SPEC-01</div>
-                            <div class="h-1.5 w-14 bg-paper-edge rounded"></div>
-                        </div>
-                    </div>
-                    <div class="p-6 space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs text-inde font-bold uppercase tracking-wider">Technical</span>
-                            <span class="text-[10px] bg-paper px-1.5 py-0.5 rounded text-ink-soft font-semibold font-mono border border-paper-edge">ID: 02</span>
-                        </div>
-                        <h4 class="font-head text-base font-bold text-ink">Indigo Interceptor</h4>
-                        <p class="text-xs text-ink-soft leading-relaxed">Ideal for batteries, consumer electronics, industrial machines and clean-tech hardware.</p>
-                    </div>
-                </div>
-
-                <!-- Theme 3 -->
-                <div class="paper-card paper-lift overflow-hidden reveal">
-                    <div class="h-48 bg-leaf/5 flex items-center justify-center p-6" style="border-bottom: 1.5px dashed rgba(139,128,107,.30);">
-                        <div class="w-full max-w-[140px] bg-paper-card rounded-xl p-2.5 border-[1.5px] border-paper-edge shadow-[2px_2px_rgba(90,80,60,.15)] space-y-1.5">
-                            <div class="flex justify-between items-center">
-                                <div class="w-3 h-3 rounded bg-leaf"></div>
-                                <div class="h-1.5 w-8 bg-paper-edge rounded"></div>
-                            </div>
-                            <div class="h-12 bg-leaf/10 rounded flex items-center justify-center text-[10px] text-leaf-dark font-bold border border-leaf/20">CO₂ -4.5kg</div>
-                            <div class="h-1.5 w-12 bg-paper-edge rounded"></div>
-                        </div>
-                    </div>
-                    <div class="p-6 space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs text-leaf font-bold uppercase tracking-wider">Eco minimalist</span>
-                            <span class="text-[10px] bg-paper px-1.5 py-0.5 rounded text-ink-soft font-semibold font-mono border border-paper-edge">ID: 03</span>
-                        </div>
-                        <h4 class="font-head text-base font-bold text-ink">Earthy Minimal</h4>
-                        <p class="text-xs text-ink-soft leading-relaxed">Made for sustainable fashion, home furniture, natural textiles and lifestyle cosmetics.</p>
-                    </div>
-                </div>
-
-                <!-- Bespoke -->
-                <div class="rounded-2xl p-8 flex flex-col justify-between text-paper-card reveal paper-lift" style="background: #2d2b27; border: 1.5px solid rgba(45,43,39,.9); box-shadow: 2px 2px rgba(195,98,55,.35), 0 6px 12px -2px rgba(90,80,60,.25);">
-                    <div class="space-y-4">
-                        <span class="text-[10px] bg-terra text-white px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Bespoke design studio</span>
-                        <h4 class="font-head text-xl font-bold">Your custom edition</h4>
-                        <p class="text-xs text-paper-edge leading-relaxed">
-                            Our designers hand-craft a passport that mirrors your physical packaging, typography and brand rituals — a true limited edition of one.
-                        </p>
-                    </div>
-                    <a href="#contact" class="inline-flex items-center text-xs font-bold text-terra-light uppercase tracking-widest hover:text-white transition-colors pt-6">
-                        Inquire bespoke edition <i data-lucide="arrow-right" class="ml-1 w-4 h-4"></i>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ CONTACT ============ -->
-    <section id="contact" class="py-20 lg:py-24 bg-paper/60 border-t-[1.5px]" style="border-color: var(--edge-soft);">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-
-                <!-- Info -->
-                <div class="lg:col-span-5 space-y-8 reveal">
-                    <div>
-                        <span class="text-xs font-bold uppercase tracking-widest text-inde bg-inde/10 border-[1.5px] border-inde/25 px-3.5 py-1.5 rounded-full">Work with our team</span>
-                        <h2 class="font-head text-4xl font-extrabold tracking-tight text-ink mt-4 leading-tight">
-                            Let's co-create<br />your digital passport
-                        </h2>
-                        <p class="text-base text-ink-soft mt-4 leading-relaxed">
-                            Curious how our passports fit your operations, ERP databases or brand guidelines? Tell us about your brand and we'll prepare a tailored preview for you.
-                        </p>
-                    </div>
-
-                    <div class="space-y-4 text-sm text-ink-soft">
-                        <div class="flex items-start space-x-3">
-                            <div class="p-1.5 bg-inde/10 text-inde border border-inde/25 rounded-lg mt-0.5">
-                                <i data-lucide="check" class="w-4 h-4"></i>
-                            </div>
-                            <p><strong class="text-ink font-semibold">1-on-1 consultation:</strong> define custom layouts that echo your premium physical labels.</p>
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <div class="p-1.5 bg-inde/10 text-inde border border-inde/25 rounded-lg mt-0.5">
-                                <i data-lucide="arrow-right-left" class="w-4 h-4"></i>
-                            </div>
-                            <p><strong class="text-ink font-semibold">Technical feasibility:</strong> we integrate the passport directly into your existing workflow.</p>
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <div class="p-1.5 bg-inde/10 text-inde border border-inde/25 rounded-lg mt-0.5">
-                                <i data-lucide="check" class="w-4 h-4"></i>
-                            </div>
-                            <p><strong class="text-ink font-semibold">Compliance mapping:</strong> precise alignment with EU Ecodesign guidelines (textiles, apparel, electronics).</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Form -->
-                <div class="lg:col-span-7 paper-card p-8 sm:p-10 relative overflow-hidden reveal">
-                    <div class="absolute top-0 right-0 w-32 h-32 rounded-full blur-2xl pointer-events-none" style="background: rgba(50,115,166,.08);"></div>
-                    <form id="contact-form" class="space-y-6" onsubmit="handleFormSubmission(event)">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                                <label for="form-name" class="block text-xs font-bold uppercase tracking-wider text-ink-soft mb-2">First & last name</label>
-                                <input type="text" id="form-name" required placeholder="Alexander Mercer" class="paper-input w-full px-4 py-3 text-sm text-ink" />
-                            </div>
-                            <div>
-                                <label for="form-brand" class="block text-xs font-bold uppercase tracking-wider text-ink-soft mb-2">Brand / company name</label>
-                                <input type="text" id="form-brand" required placeholder="Signature Clothing S.p.A." class="paper-input w-full px-4 py-3 text-sm text-ink" />
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                                <label for="form-email" class="block text-xs font-bold uppercase tracking-wider text-ink-soft mb-2">Business email</label>
-                                <input type="email" id="form-email" required placeholder="alex@example.com" class="paper-input w-full px-4 py-3 text-sm text-ink" />
-                            </div>
-                            <div>
-                                <label for="form-category" class="block text-xs font-bold uppercase tracking-wider text-ink-soft mb-2">Primary industry sector</label>
-                                <select id="form-category" class="paper-input w-full px-4 py-3 text-sm text-ink">
-                                    <option value="textiles">Textiles & Apparel</option>
-                                    <option value="furniture">Home Furniture</option>
-                                    <option value="electronics">Consumer Electronics</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label for="form-message" class="block text-xs font-bold uppercase tracking-wider text-ink-soft mb-2">How can our team assist you?</label>
-                            <textarea id="form-message" rows="4" placeholder="We want our Digital Product Passports to represent our premium artisan values..." class="paper-input w-full px-4 py-3 text-sm text-ink"></textarea>
-                        </div>
-
-                        <button type="submit" id="submit-form-btn" class="paper-btn w-full py-4 bg-terra hover:bg-terra-light text-white font-semibold rounded-xl flex items-center justify-center space-x-2">
-                            <i data-lucide="send" class="w-4 h-4"></i>
-                            <span>Submit inquiry</span>
-                        </button>
-                    </form>
-
-                    <div id="form-toast" class="hidden mt-4 p-4 bg-leaf/10 border-[1.5px] border-leaf/30 text-leaf-dark rounded-xl flex items-center space-x-3">
-                        <i data-lucide="check-circle" class="w-5 h-5"></i>
-                        <div>
-                            <p class="text-xs font-bold">Inquiry received successfully!</p>
-                            <p class="text-[11px] opacity-80">Our lead designer will construct your preview passport and connect with you shortly.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="mt-12 text-center">
-                <p class="text-xs text-ink-soft leading-relaxed">
-                    Or if you want to contact us about other services we offer (e.g. legal data retention law for DPP from other providers), <br class="hidden sm:inline" />
-                    email us directly at <a href="mailto:sales@dpp4you.com" class="text-inde hover:text-inde-dark font-semibold underline decoration-inde/30 hover:decoration-inde transition-colors">sales@dpp4you.com</a>
+          <div id="contact-success" class="hidden">
+            <div class="flex items-start gap-4">
+              <span class="icon-bubble bg-teal/15 text-teal-dark shrink-0">
+                <i data-lucide="check" class="w-6 h-6"></i>
+              </span>
+              <div>
+                <p class="font-head font-extrabold text-2xl text-navy-deep">Message received!</p>
+                <p class="mt-2 text-ink-soft leading-relaxed">
+                  Thanks for reaching out. A member of the dpp4you team will get back to you shortly
+                  to schedule a call and explore your needs.
                 </p>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- ============ FOOTER ============ -->
-    <footer class="bg-paper-deep border-t-[1.5px]" style="border-color: var(--edge-soft);">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="space-y-3">
-                    <div class="flex items-center space-x-2.5">
-                        <span class="w-8 h-8 rounded-lg bg-paper-card border-[1.5px] flex items-center justify-center" style="border-color: var(--edge);">
-                            <i data-lucide="qr-code" class="w-4 h-4 text-terra"></i>
-                        </span>
-                        <span class="font-head font-extrabold text-ink">dpp<span class="text-terra">4</span>you</span>
-                    </div>
-                    <p class="text-xs text-ink-soft leading-relaxed max-w-xs">
-                        Beautiful, multilingual Digital Product Passports that turn EU compliance into your finest brand touchpoint.
-                    </p>
-                </div>
+        <!-- details -->
+        <aside class="lg:col-span-2 reveal">
+          <div class="rounded-4xl bg-navy text-cream p-8 sm:p-10 shadow-soft">
+            <h3 class="font-head font-extrabold text-2xl">Prefer email?</h3>
+            <p class="mt-3 text-cream/80 leading-relaxed">Write to us directly. Same humans, same care.</p>
+            <a href="mailto:sales@dpp4you.com" class="mt-6 inline-flex items-center gap-2 text-gold-soft font-head font-bold hover:text-gold transition-colors">
+              <i data-lucide="mail" class="w-5 h-5"></i>
+              sales@dpp4you.com
+            </a>
+
+            <hr class="my-8 border-cream/15" />
+
+            <ul class="space-y-5">
+              <li class="flex items-start gap-3">
+                <i data-lucide="shield-check" class="w-5 h-5 text-gold-soft shrink-0 mt-0.5"></i>
                 <div>
-                    <p class="text-xs font-bold uppercase tracking-widest text-ink-mute mb-4">Explore</p>
-                    <ul class="space-y-2.5 text-sm font-semibold text-ink-soft">
-                        <li><a href="#why" class="hover:text-terra transition-colors">Why us</a></li>
-                        <li><a href="#simulator" class="hover:text-terra transition-colors">Live demo</a></li>
-                        <li><a href="#languages" class="hover:text-terra transition-colors">Languages</a></li>
-                        <li><a href="#templates" class="hover:text-terra transition-colors">Templates</a></li>
-                    </ul>
+                  <p class="font-head font-bold">Compliance mapping</p>
+                  <p class="text-sm text-cream/70">ESPR, textiles, electronics and more. We know the terrain.</p>
                 </div>
-                <div>
-                    <p class="text-xs font-bold uppercase tracking-widest text-ink-mute mb-4">Get in touch</p>
-                    <ul class="space-y-2.5 text-sm font-semibold text-ink-soft">
-                        <li><a href="mailto:sales@dpp4you.com" class="hover:text-terra transition-colors inline-flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> sales@dpp4you.com</a></li>
-                        <li><a href="#contact" class="hover:text-terra transition-colors inline-flex items-center gap-2"><i data-lucide="send" class="w-4 h-4"></i> Contact form</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mt-12 pt-6 tear-line flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-ink-soft">
-                <span>© <span id="year"></span> dpp4you. All rights reserved.</span>
-                <span>Made with ❤️ for you in the 🇪🇺</span>
-            </div>
+              </li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-navy-deep text-cream">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <div class="grid md:grid-cols-3 gap-12 items-start">
+        <div>
+          <span class="logo-chip">
+            <img src="assets/logo-wordmark.png" alt="dpp4you" class="word" />
+          </span>
+          <p class="mt-5 text-cream/70 leading-relaxed max-w-sm">
+            Beyond compliance: all in one DPP<br />
+            <span class="accent-serif text-gold-soft">the place where compliance makes your business stand out</span>
+          </p>
         </div>
-    </footer>
 
-    <!-- ============ JAVASCRIPT ============ -->
-    <script>
-        // ---------- Init ----------
-        window.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
-            switchSimTab('portfolio');
-            initReveal();
-            document.getElementById('year').innerText = new Date().getFullYear();
-        });
+        <div>
+          <p class="font-head font-bold text-gold-soft text-sm uppercase tracking-widest">Explore</p>
+          <ul class="mt-4 space-y-3">
+            <li><a href="#guide" class="text-cream/80 hover:text-gold-soft transition-colors">Free guide</a></li>
+            <li><a href="#services" class="text-cream/80 hover:text-gold-soft transition-colors">Services</a></li>
+            <li><a href="#contact" class="text-cream/80 hover:text-gold-soft transition-colors">Book a call</a></li>
+          </ul>
+        </div>
 
-        // ---------- Mobile menu ----------
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const open = document.getElementById('menu-icon-open');
-            const close = document.getElementById('menu-icon-close');
-            menu.classList.toggle('hidden');
-            open.classList.toggle('hidden');
-            close.classList.toggle('hidden');
+        <div>
+          <p class="font-head font-bold text-gold-soft text-sm uppercase tracking-widest">Contact</p>
+          <ul class="mt-4 space-y-3">
+            <li><a href="mailto:sales@dpp4you.com" class="text-cream/80 hover:text-gold-soft transition-colors">sales@dpp4you.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="my-10 border-cream/10" />
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-cream/55">
+        <p>© <span id="year"></span> dpp4you. All rights reserved.</p>
+        <p>Made with care in the EU</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', String(!open));
+    });
+    document.querySelectorAll('.mobile-link').forEach((el) => {
+      el.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    function mockSubmit(formId, successId) {
+      const form = document.getElementById(formId);
+      const success = document.getElementById(successId);
+      if (!form || !success) return;
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
         }
+        const btn = form.querySelector('button[type="submit"]');
+        const original = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        setTimeout(() => {
+          form.classList.add('hidden');
+          success.classList.remove('hidden');
+          lucide.createIcons();
+          btn.disabled = false;
+          btn.textContent = original;
+        }, 900);
+      });
+    }
+    mockSubmit('guide-form', 'guide-success');
+    mockSubmit('contact-form', 'contact-success');
 
-        // ---------- Scroll reveal ----------
-        function initReveal() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) {
-                        e.target.classList.add('in');
-                        observer.unobserve(e.target);
-                    }
-                });
-            }, { threshold: 0.12 });
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-        }
-
-        // ---------- Smartphone simulator ----------
-        const simBase = "paper-card paper-press w-full text-left p-4 flex items-start space-x-4";
-        const simActive = {
-            'compliance': "paper-card paper-press w-full text-left p-4 flex items-start space-x-4 !border-ink/40",
-            'portfolio': "paper-card paper-press w-full text-left p-4 flex items-start space-x-4 !border-terra",
-            'contact-loop': "paper-card paper-press w-full text-left p-4 flex items-start space-x-4 !border-inde"
-        };
-
-        function switchSimTab(tab) {
-            const phoneLabel = document.getElementById('sim-phone-label');
-            const phoneTitle = document.getElementById('sim-phone-title');
-            const contentArea = document.getElementById('sim-content-area');
-
-            document.getElementById('sim-btn-compliance').className = simBase;
-            document.getElementById('sim-btn-portfolio').className = simBase;
-            document.getElementById('sim-btn-contact-loop').className = simBase;
-            document.getElementById('sim-btn-' + tab).className = simActive[tab];
-
-            if (tab === 'compliance') {
-                phoneLabel.innerText = "Regulatory data minimum";
-                phoneTitle.innerText = "Compliance Spreadsheet";
-                contentArea.innerHTML = `
-                    <div class="space-y-3">
-                        <div class="bg-white p-4 rounded-xl border-[1.5px] border-paper-edge space-y-2.5 font-mono text-[9px] text-ink-soft shadow-[1.5px_1.5px_rgba(90,80,60,.10)]">
-                            <div class="flex justify-between pb-1.5" style="border-bottom: 1.5px dashed rgba(139,128,107,.25);">
-                                <span class="text-ink-mute">REGISTRATION ID</span>
-                                <span class="text-ink font-bold">EU-ESPR-98831-294</span>
-                            </div>
-                            <div class="flex justify-between pb-1.5" style="border-bottom: 1.5px dashed rgba(139,128,107,.25);">
-                                <span class="text-ink-mute">MANUFACTURER ID</span>
-                                <span class="text-ink font-bold">EU-STUDIO-APPAREL</span>
-                            </div>
-                            <div class="flex justify-between pb-1.5" style="border-bottom: 1.5px dashed rgba(139,128,107,.25);">
-                                <span class="text-ink-mute">CARBON METRIC (CO2e)</span>
-                                <span class="text-ink font-bold">4.21 Kg CO2e/unit</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-ink-mute">TRACEABLE CIRCULARITY</span>
-                                <span class="text-ink font-bold">85.4% Traceable</span>
-                            </div>
-                        </div>
-                        <div class="bg-white p-3.5 rounded-xl border-[1.5px] border-paper-edge space-y-2 text-[10px] text-ink-soft shadow-[1.5px_1.5px_rgba(90,80,60,.10)]">
-                            <p class="font-bold text-ink">Materials breakdown:</p>
-                            <div class="w-full bg-paper border border-paper-edge rounded-full h-2.5 overflow-hidden flex">
-                                <div class="bg-terra h-full" style="width: 85%"></div>
-                                <div class="bg-paper-edge h-full" style="width: 15%"></div>
-                            </div>
-                            <div class="flex justify-between text-[8px] text-ink-mute">
-                                <span>85% Organic Recycled Alpaca</span>
-                                <span>15% Virgin Wool</span>
-                            </div>
-                        </div>
-                    </div>`;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReduced && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in');
+              io.unobserve(entry.target);
             }
-            else if (tab === 'portfolio') {
-                phoneLabel.innerText = "Interactive portfolio view";
-                phoneTitle.innerText = "Signature Woolen Coat";
-                contentArea.innerHTML = `
-                    <div class="space-y-4">
-                        <div class="relative rounded-2xl overflow-hidden h-32 bg-cover bg-center border-[1.5px] border-paper-edge" style="background-image: url('https://placehold.co/400x300/9c4923/FAF8F5?text=Heritage');">
-                            <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/30 to-transparent flex flex-col justify-end p-3.5">
-                                <span class="text-[8px] font-bold text-terra-light tracking-widest uppercase">The story</span>
-                                <p class="text-xs text-white font-medium leading-tight">100% Sustainable Alpaca, Woven in Biella, Italy</p>
-                            </div>
-                        </div>
-                        <div class="bg-white p-4 rounded-2xl border-[1.5px] border-paper-edge space-y-2 shadow-[1.5px_1.5px_rgba(90,80,60,.10)]">
-                            <h4 class="text-[9px] font-bold text-terra tracking-wider uppercase">Craftsman & provenance</h4>
-                            <p class="text-[10px] text-ink-soft leading-relaxed font-light">
-                                Spun with zero chemical runoff. Every batch is certified organic, protecting local pasturelands in Piedmont from soil degradation.
-                            </p>
-                            <button class="inline-flex items-center text-[9px] text-terra-dark font-bold hover:underline">
-                                Explore Italian weavers <i data-lucide="chevron-right" class="w-3 h-3 ml-0.5"></i>
-                            </button>
-                        </div>
-                        <div class="grid grid-cols-2 gap-3 text-center">
-                            <div class="bg-white p-3 rounded-xl border-[1.5px] border-paper-edge shadow-[1.5px_1.5px_rgba(90,80,60,.10)]">
-                                <span class="block font-head text-base font-extrabold text-terra">Grade A</span>
-                                <span class="text-[8px] text-ink-mute uppercase font-bold tracking-wider">Circularity rating</span>
-                            </div>
-                            <div class="bg-white p-3 rounded-xl border-[1.5px] border-paper-edge shadow-[1.5px_1.5px_rgba(90,80,60,.10)]">
-                                <span class="block font-head text-base font-extrabold text-inde">CO₂ Neutral</span>
-                                <span class="text-[8px] text-ink-mute uppercase font-bold tracking-wider">Product lifecycle</span>
-                            </div>
-                        </div>
-                    </div>`;
-            }
-            else if (tab === 'contact-loop') {
-                phoneLabel.innerText = "Brand touchpoint channel";
-                phoneTitle.innerText = "Register & Chat Loop";
-                contentArea.innerHTML = `
-                    <div class="space-y-3.5">
-                        <div class="bg-inde/5 p-4 rounded-2xl border-[1.5px] border-inde/25 text-center space-y-2">
-                            <p class="text-[11px] font-bold text-inde-dark">Own this product?</p>
-                            <p class="text-[10px] text-inde/80 leading-normal font-light">Register your premium 5-year warranty directly with the manufacturer in a single tap.</p>
-                            <button onclick="simulateAction('Ownership registered! Your warranty is now active.')" class="paper-btn w-full py-2.5 bg-inde hover:bg-inde-light text-white rounded-xl text-[10px] font-bold">
-                                Register ownership & activate warranty
-                            </button>
-                        </div>
-                        <div class="space-y-2">
-                            <button onclick="simulateAction('Support connection established with Studio Tailors.')" class="paper-card paper-press w-full p-3 flex items-center justify-between text-left">
-                                <div class="flex items-center space-x-2.5">
-                                    <span class="p-1.5 bg-terra/10 text-terra-dark rounded-lg border border-terra/25">
-                                        <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
-                                    </span>
-                                    <div>
-                                        <p class="text-[10px] font-bold text-ink">Request repair or stitch service</p>
-                                        <p class="text-[8px] text-ink-mute font-light">Complimentary under warranty</p>
-                                    </div>
-                                </div>
-                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-ink-mute"></i>
-                            </button>
-                            <button onclick="simulateAction('Resale portal connected. Preparing trade-in options.')" class="paper-card paper-press w-full p-3 flex items-center justify-between text-left">
-                                <div class="flex items-center space-x-2.5">
-                                    <span class="p-1.5 bg-leaf/10 text-leaf rounded-lg border border-leaf/25">
-                                        <i data-lucide="recycle" class="w-3.5 h-3.5"></i>
-                                    </span>
-                                    <div>
-                                        <p class="text-[10px] font-bold text-ink">Verified pre-owned resale hub</p>
-                                        <p class="text-[8px] text-ink-mute font-medium">Trade in for secure store credit</p>
-                                    </div>
-                                </div>
-                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-ink-mute"></i>
-                            </button>
-                        </div>
-                    </div>`;
-            }
-            lucide.createIcons();
-        }
-
-        // Toast feedback inside the simulated phone
-        function simulateAction(msg) {
-            const existing = document.getElementById('simulator-feedback-toast');
-            if (existing) existing.remove();
-            const toast = document.createElement('div');
-            toast.id = "simulator-feedback-toast";
-            toast.className = "absolute bottom-16 left-4 right-4 bg-ink text-paper-card p-3 rounded-xl shadow-2xl text-[10px] text-center transition-opacity duration-300 z-50";
-            toast.innerText = msg;
-            document.getElementById('simulator-phone-screen').appendChild(toast);
-            setTimeout(() => {
-                toast.classList.add('opacity-0');
-                setTimeout(() => toast.remove(), 400);
-            }, 3000);
-        }
-
-        // ---------- Multilingual live preview ----------
-        const I18N = {
-            en: { tag: 'Digital Product Passport', mat: 'Materials & Provenance', story: '100% sustainable alpaca, woven in Biella, Italy.', btn: 'Register warranty', ver: 'Verified authentic', code: 'EN' },
-            it: { tag: 'Passaporto Digitale del Prodotto', mat: 'Materiali e Provenienza', story: '100% alpaca sostenibile, tessuto a Biella, Italia.', btn: 'Registra la garanzia', ver: 'Autenticità verificata', code: 'IT' },
-            fr: { tag: 'Passeport Numérique du Produit', mat: 'Matières & Provenance', story: '100% alpaga durable, tissé à Biella, Italie.', btn: 'Enregistrer la garantie', ver: 'Authenticité vérifiée', code: 'FR' },
-            de: { tag: 'Digitaler Produktpass', mat: 'Materialien & Herkunft', story: '100% nachhaltige Alpakawolle, gewebt in Biella, Italien.', btn: 'Garantie registrieren', ver: 'Echtheit verifiziert', code: 'DE' },
-            es: { tag: 'Pasaporte Digital del Producto', mat: 'Materiales y Procedencia', story: '100% alpaca sostenible, tejido en Biella, Italia.', btn: 'Registrar garantía', ver: 'Autenticidad verificada', code: 'ES' },
-            pt: { tag: 'Passaporte Digital do Produto', mat: 'Materiais e Proveniência', story: '100% alpaca sustentável, tecido em Biella, Itália.', btn: 'Registar garantia', ver: 'Autenticidade verificada', code: 'PT' },
-            nl: { tag: 'Digitaal Productpaspoort', mat: 'Materialen & Herkomst', story: '100% duurzame alpaca, geweven in Biella, Italië.', btn: 'Garantie registreren', ver: 'Echtheid geverifieerd', code: 'NL' },
-            pl: { tag: 'Cyfrowy Paszport Produktu', mat: 'Materiały i Pochodzenie', story: '100% zrównoważonej alpaki, tkane w Bielle, Włochy.', btn: 'Zarejestruj gwarancję', ver: 'Autentyczność zweryfikowana', code: 'PL' },
-            sv: { tag: 'Digitalt Produktpass', mat: 'Material & Ursprung', story: '100% hållbar alpacka, vävd i Biella, Italien.', btn: 'Registrera garantin', ver: 'Äkthet verifierad', code: 'SV' },
-            da: { tag: 'Digitalt Produktpas', mat: 'Materialer & Oprindelse', story: '100% bæredygtig alpaka, vævet i Biella, Italien.', btn: 'Registrér garantien', ver: 'Ægthed verificeret', code: 'DA' }
-        };
-
-        function setLang(lang, chipEl) {
-            const t = I18N[lang];
-            if (!t) return;
-            const card = document.getElementById('lang-preview');
-            // Small paper-flip feedback
-            card.style.transform = 'translateY(4px) scale(.98)';
-            card.style.opacity = '.4';
-            setTimeout(() => {
-                document.getElementById('lp-tag').innerText = t.tag;
-                document.getElementById('lp-mat').innerText = t.mat;
-                document.getElementById('lp-story').innerText = t.story;
-                document.getElementById('lp-btn').innerText = t.btn;
-                document.getElementById('lp-ver').innerText = t.ver;
-                document.getElementById('lp-lang-tag').innerText = t.code;
-                card.style.transform = '';
-                card.style.opacity = '1';
-            }, 160);
-            // Update active chip
-            document.querySelectorAll('#lang-chips .lang-chip').forEach(c => c.classList.remove('active'));
-            if (chipEl) chipEl.classList.add('active');
-        }
-
-        // ---------- Contact form ----------
-        function handleFormSubmission(event) {
-            event.preventDefault();
-            const btn = document.getElementById('submit-form-btn');
-            const toast = document.getElementById('form-toast');
-
-            btn.disabled = true;
-            btn.innerHTML = `
-                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                <span>Sending...</span>`;
-
-            setTimeout(() => {
-                btn.className = "paper-btn w-full py-4 bg-leaf text-white font-semibold rounded-xl flex items-center justify-center space-x-2";
-                btn.innerHTML = `<i data-lucide="check-circle" class="w-5 h-5"></i><span>Inquiry sent</span>`;
-                toast.classList.remove('hidden');
-                lucide.createIcons();
-            }, 1200);
-        }
-    </script>
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
+    }
+  </script>
 </body>
 </html>
